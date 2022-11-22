@@ -31,28 +31,32 @@ function App() {
 
   const searchProduct = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&limit=${productPerPage}`
+      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&limit=${productPerPage}`,
+      { withCredentials: true }
     );
     setProducts(res.data);
   };
 
   const categoryFilter = async (category) => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?category=${category}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`
+      `https://kevine-commerce.herokuapp.com/products?category=${category}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      { withCredentials: true }
     );
     setProducts(res.data);
   };
 
   const searchCategory = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?category=${category}`
+      `https://kevine-commerce.herokuapp.com/products?category=${category}`,
+      { withCredentials: true }
     );
     setProducts(res.data);
   };
 
   const checkboxFilter = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`
+      `https://kevine-commerce.herokuapp.com/products?category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      { withCredentials: true }
     );
 
     setProducts(res.data);
@@ -83,14 +87,16 @@ function App() {
 
   const showPageProduct = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&p=${page}&limit=${productPerPage}`
+      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&p=${page}&limit=${productPerPage}`,
+      { withCredentials: true }
     );
     setProducts(res.data);
   };
 
   const showProductPerPage = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`
+      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      { withCredentials: true }
     );
     setProducts(res.data);
   };
