@@ -23,8 +23,8 @@ function App() {
   const [page, setPage] = useState(0);
   const [productPerPage, setProductPerPage] = useState(6);
   const [brands, setBrands] = useState("");
-  const [minPrice, setMinPrice] = useState(60);
-  const [maxPrice, setMaxPrice] = useState(400);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(2000);
   const [value, setValue] = useState([minPrice, maxPrice]);
 
   console.log(brands);
