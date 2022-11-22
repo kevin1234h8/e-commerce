@@ -1,0 +1,39 @@
+[
+  {
+    "main": "Get in touch",
+    "sub": [
+      { "name": "About Us" },
+      { "name": "Careers" },
+      { "name": "Press Releases" },
+      { "name": "Blog" }
+    ]
+  },
+  {
+    "main": "Connections",
+    "sub": [
+      { "name": "Facebook" },
+      { "name": "Twitter" },
+      { "name": "Instagram" },
+      { "name": "Youtube" },
+      { "name": "LinkenIn" }
+    ]
+  },
+  {
+    "main": "Earning",
+    "sub": [
+      { "name": "Become an Affilate" },
+      { "name": "Adversite your product" },
+      { "name": "Sell on Market" }
+    ]
+  },
+  {
+    "main": "Account",
+    "sub": [
+      { "name": "Your Account" },
+      { "name": "Returns Centre" },
+      { "name": "100 % purchase protection" },
+      { "name": "Chat with us" },
+      { "name": "Help" }
+    ]
+  }
+]
