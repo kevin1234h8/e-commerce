@@ -31,28 +31,28 @@ function App() {
 
   const searchProduct = async () => {
     const res = await axios.get(
-      `http://localhost:5000/products?q=${search}&category=${category}&limit=${productPerPage}`
+      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&limit=${productPerPage}`
     );
     setProducts(res.data);
   };
 
   const categoryFilter = async (category) => {
     const res = await axios.get(
-      `http://localhost:5000/products?category=${category}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`
+      `https://kevine-commerce.herokuapp.com/products?category=${category}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`
     );
     setProducts(res.data);
   };
 
   const searchCategory = async () => {
     const res = await axios.get(
-      `http://localhost:5000/products?category=${category}`
+      `https://kevine-commerce.herokuapp.com/products?category=${category}`
     );
     setProducts(res.data);
   };
 
   const checkboxFilter = async () => {
     const res = await axios.get(
-      `http://localhost:5000/products?category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`
+      `https://kevine-commerce.herokuapp.com/products?category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`
     );
 
     setProducts(res.data);
@@ -61,7 +61,7 @@ function App() {
   useEffect(() => {
     const getProduct = async () => {
       const res = await axios.get(
-        `http://localhost:5000/products?p=${page}&limit=${productPerPage}`
+        `https://kevine-commerce.herokuapp.com/products?p=${page}&limit=${productPerPage}`
       );
       setProducts(res.data);
     };
@@ -71,7 +71,9 @@ function App() {
   useEffect(() => {
     const getLoginData = async () => {
       await axios
-        .get("http://localhost:5000/login/success", { withCredentials: true })
+        .get("https://kevine-commerce.herokuapp.com/login/success", {
+          withCredentials: true,
+        })
         .then((res) => {
           setUser(res.data);
         });
@@ -81,14 +83,14 @@ function App() {
 
   const showPageProduct = async () => {
     const res = await axios.get(
-      `http://localhost:5000/products?q=${search}&category=${category}&p=${page}&limit=${productPerPage}`
+      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&p=${page}&limit=${productPerPage}`
     );
     setProducts(res.data);
   };
 
   const showProductPerPage = async () => {
     const res = await axios.get(
-      `http://localhost:5000/products?q=${search}&category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`
+      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`
     );
     setProducts(res.data);
   };
