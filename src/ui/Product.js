@@ -330,7 +330,7 @@ const Product = ({
           </div>
         </div>
 
-        <div className="product grid grid-cols-1 grid-rows-1 gap-[15px] md:gap-[25px] lg:gap-[40px] lg:grid-cols-2 lg:grid-row-2 xl:grid-cols-3">
+        <div className="product grid grid-cols-1 grid-rows-3 gap-[15px] md:gap-[25px] lg:gap-[40px] lg:grid-cols-2 lg:grid-row-4 xl:grid-cols-3">
           {products.map((product, index) => {
             return (
               <div
