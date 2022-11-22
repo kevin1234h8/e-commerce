@@ -27,6 +27,14 @@ function App() {
   const [maxPrice, setMaxPrice] = useState(2000);
   const [value, setValue] = useState([minPrice, maxPrice]);
 
+  useEffect(() => {
+    localStorage.setItem("selectedItem", JSON.stringify(category));
+  }, [category]);
+
+  useEffect(() => {
+    JSON.parse(localStorage.getItem("selectedItem"));
+  }, []);
+
   const searchProduct = async () => {
     const res = await axios.get(
       `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&limit=${productPerPage}`,
