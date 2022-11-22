@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Navbar = ({ user }) => {
   const logout = () => {
-    window.open("http://localhost:5000/logout", "_self");
+    window.open("https://kevine-commerce.herokuapp.com/logout", "_self");
   };
   return (
     <div className="flex items-center justify-between px-8 py-6">

@@ -59,12 +59,12 @@ const Product = ({
 
   return (
     <>
-      <div className="p-8 flex gap-[40px]">
-        <div className="categories">
+      <div className="p-8 flex gap-[10px] w-full md:gap-[20px] lg:gap-[30px]">
+        <div className="categories hidden md:block">
           <div className="mb-6">
             <div className="text-[18px] font-bold my-4">Categories</div>
             <div className="flex flex-col">
-              <div className="my-1">
+              <div className="my-1 hidden md:block">
                 <input
                   type="radio"
                   name="filter"
@@ -74,7 +74,7 @@ const Product = ({
                 />
                 <label htmlFor="">Category All</label>
               </div>
-              <div className="my-1">
+              <div className="my-1 hidden md:block">
                 <input
                   type="radio"
                   name="filter"
@@ -84,7 +84,7 @@ const Product = ({
                 />
                 <label htmlFor="">Category Smartphones</label>
               </div>
-              <div className="my-1">
+              <div className="my-1  hidden md:block">
                 <input
                   type="radio"
                   name="filter"
@@ -94,7 +94,7 @@ const Product = ({
                 />
                 <label htmlFor="">Category Laptops</label>
               </div>
-              <div className="my-1">
+              <div className="my-1  hidden md:block">
                 <input
                   type="radio"
                   name="filter"
@@ -104,7 +104,7 @@ const Product = ({
                 />
                 <label htmlFor="">Category Fragrances</label>
               </div>
-              <div className="my-1">
+              <div className="my-1  hidden md:block">
                 <input
                   type="radio"
                   name="filter"
@@ -114,7 +114,7 @@ const Product = ({
                 />
                 <label htmlFor="">Category Skincare</label>
               </div>
-              <div className="my-1">
+              <div className="my-1  hidden md:block">
                 <input
                   type="radio"
                   name="filter"
@@ -124,7 +124,7 @@ const Product = ({
                 />
                 <label htmlFor="">Category Groceries</label>
               </div>
-              <div className="my-1">
+              <div className="my-1  hidden md:block">
                 <input
                   type="radio"
                   name="filter"
@@ -138,7 +138,7 @@ const Product = ({
           </div>
           <div className="my-6">
             <div className="text-[18px] font-bold my-4">Brands</div>
-            <div className="flex">
+            <div className="lg:flex">
               <div>
                 <BrandFilter
                   setBrands={setBrands}
@@ -330,11 +330,11 @@ const Product = ({
           </div>
         </div>
 
-        <div className="product grid grid-cols-3 grid-rows-3 gap-[40px]">
+        <div className="product grid grid-cols-1 grid-rows-1 gap-[15px] md:gap-[25px] lg:gap-[40px] lg:grid-cols-2 lg:grid-row-2 xl:grid-cols-3">
           {products.map((product, index) => {
             return (
               <div
-                className="flex flex-col justify-between  border-2 shadow-md rounded-lg p-4 border-[#D1D1D1] max-h-[450px]"
+                className="flex flex-col  border-2 shadow-md rounded-lg p-4 border-[#D1D1D1] max-h-[450px]"
                 key={index}
               >
                 <div className="text-[#6A983c] my-2 ">
@@ -342,7 +342,7 @@ const Product = ({
                 </div>
                 <Link to={`/product/${product.id}`}>
                   <img
-                    className="min-w-full rounded-lg h-48 object-cover"
+                    className="min-w-full rounded-lg h-[174px] object-cover"
                     src={product?.thumbnail}
                     alt=""
                   />
@@ -362,14 +362,16 @@ const Product = ({
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-2xl font-extrabold">
+                    <div className="text-[16px] font-extrabold md:text[24px]">
                       {Math.floor(
                         product?.price -
                           (product?.price * product?.discountPercentage) / 100
                       )}{" "}
                       USD
                     </div>
-                    <del>${product?.price}</del>
+                    <del className="text-[12px] md:text-[16px]">
+                      ${product?.price}
+                    </del>
                   </div>
                   <div>
                     <button

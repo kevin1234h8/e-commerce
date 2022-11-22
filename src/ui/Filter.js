@@ -12,8 +12,8 @@ const Filter = () => {
 
   return (
     <>
-      <div className="flex items-center px-8">
-        <div className="mr-4">
+      <div className="grid grid-flow-col grid-rows-4 items-center px-8">
+        <div className="md:mr-4">
           <div className="flex bg-[#F9F9F9] border-2 border-[#D1D1D1] p-4 rounded-[12px]">
             <div className="mr-4">
               <input
@@ -33,38 +33,48 @@ const Filter = () => {
             </div>
           </div>
         </div>
-        <div className="flex mr-4 bg-[#F9F9F9] border-2 border-[#D1D1D1] p-4 rounded-[12px]">
-          <div className="mr-4 flex items-center ">
-            <input
-              name="filter1"
-              type="radio"
-              className="accent-black scale-150 mr-4"
-            />
-            <label htmlFor="filter1" className="mr-4">
-              Filter text
-            </label>
-            <div className="font-extrabold border border-[#EBEBEB]  rounded-full px-1">
-              Nbm
+        <div className="md:mr-4">
+          <div className="flex bg-[#F9F9F9] border-2 border-[#D1D1D1] p-4 rounded-[12px]">
+            <div className="mr-4">
+              <input
+                name="filter"
+                type="radio"
+                className="accent-black scale-150 mr-4"
+              />
+              <label htmlFor="filter">Filter text</label>
+            </div>
+            <div className="mr-4">
+              <label
+                htmlFor="filter"
+                className="font-extrabold border border-[#EBEBEB]  rounded-full px-1"
+              >
+                Nbm
+              </label>
             </div>
           </div>
         </div>
-        <div className="flex mr-4 bg-[#F9F9F9] border-2 border-[#D1D1D1] p-4 rounded-[12px]">
-          <div className="mr-4 flex items-center ">
-            <input
-              name="filter1"
-              type="radio"
-              className="accent-black scale-150 mr-4"
-            />
-            <label htmlFor="filter1" className="mr-4">
-              Filter text
-            </label>
-            <div className="font-extrabold border border-[#EBEBEB]  rounded-full px-1">
-              Nbm
+        <div className="md:mr-4">
+          <div className="flex bg-[#F9F9F9] border-2 border-[#D1D1D1] p-4 rounded-[12px]">
+            <div className="mr-4">
+              <input
+                name="filter"
+                type="radio"
+                className="accent-black scale-150 mr-4"
+              />
+              <label htmlFor="filter">Filter text</label>
+            </div>
+            <div className="mr-4">
+              <label
+                htmlFor="filter"
+                className="font-extrabold border border-[#EBEBEB]  rounded-full px-1"
+              >
+                Nbm
+              </label>
             </div>
           </div>
         </div>
         <div className="flex items-center bg-[#F9F9F9] border-2 border-[#D1D1D1] p-4 rounded-[12px]">
-          <div className="mr-4 flex items-center border-r-2 px-4 ">
+          <div className="mr-4 flex items-center border-r-2  ">
             <input
               name="filter2"
               type="checkbox"

@@ -16,7 +16,7 @@ const BrandFilter = ({ brand, checkboxFilter, setBrands }) => {
   // };
 
   return (
-    <div className="my-2 ml-1">
+    <div className="my-2 ml-1 hidden md:block">
       <input
         name="brand"
         type="radio"

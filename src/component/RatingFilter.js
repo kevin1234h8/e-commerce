@@ -2,7 +2,7 @@ import React from "react";
 import { Rating } from "@mui/material";
 const RatingFilter = ({ number }) => {
   return (
-    <div className="my-2 ml-1 flex items-center ">
+    <div className="my-2 ml-1 flex items-center hidden md:block ">
       <input
         name="filter2"
         type="checkbox"
