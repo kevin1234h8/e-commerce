@@ -37,6 +37,7 @@ const Brand = ({
                   id=""
                   className="appearance-none outline-none py-2 px-4"
                   // onClick={searchCategory}
+                  defaultValue={"all"}
                   onChange={(e) => setCategory(e.target.value)}
                 >
                   <option value="all">All Category</option>
