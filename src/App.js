@@ -19,15 +19,13 @@ function App() {
   const [login, setLogin] = useState(false);
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("all");
   const [page, setPage] = useState(0);
   const [productPerPage, setProductPerPage] = useState(6);
   const [brands, setBrands] = useState("");
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(2000);
   const [value, setValue] = useState([minPrice, maxPrice]);
-
-  console.log(brands);
 
   const searchProduct = async () => {
     const res = await axios.get(
