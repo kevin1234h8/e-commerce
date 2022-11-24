@@ -2,22 +2,16 @@ import { KeyboardArrowUp } from "@mui/icons-material";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import { Rating } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import BrandFilter from "../component/BrandFilter";
 import RatingFilter from "../component/RatingFilter";
-import { addToCart } from "../features/Cart";
 import Slider from "../component/Slider";
+import { addToCart } from "../features/Cart";
 import brands from "../json/brands.json";
 const Product = ({
-  list,
-  setList,
-  search,
   products,
-  categoryFilter,
-  showProductPerPage,
-  showPageProduct,
   setPage,
   setProductPerPage,
   checkboxFilter,
@@ -29,7 +23,6 @@ const Product = ({
   minPrice,
   value,
   setValue,
-  category,
   setCategory,
 }) => {
   const { items } = useSelector((state) => state.cart);
@@ -52,8 +45,6 @@ const Product = ({
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(items));
   }, [items]);
-
-  console.log(category);
 
   return (
     <>
@@ -202,7 +193,7 @@ const Product = ({
         </div>
 
         <div className="product grid grid-cols-1 grid-rows-3 gap-[15px] md:gap-[25px] lg:gap-[40px] lg:grid-cols-2 lg:grid-row-4 xl:grid-cols-3">
-          {products.map((product, index) => {
+          {products?.map((product, index) => {
             return (
               <div
                 className="flex flex-col  border-2 shadow-md rounded-lg p-4 border-[#D1D1D1] max-h-[450px]"
@@ -237,7 +228,7 @@ const Product = ({
                       {Math.floor(
                         product?.price -
                           (product?.price * product?.discountPercentage) / 100
-                      )}{" "}
+                      )}
                       USD
                     </div>
                     <del className="text-[12px] md:text-[16px]">
@@ -269,7 +260,7 @@ const Product = ({
         </div>
       </div>
       <div className="flex items-center justify-center md:hidden">
-        {products.length === 30 ? (
+        {products?.length === 30 ? (
           <button
             onClick={showLessData}
             className="bg-[#6A983C]  flex items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 "
@@ -293,8 +284,6 @@ const Product = ({
       </div>
       <div className="p-8 flex items-center justify-between">
         <div className="flex items-center gap-[10px]  ">
-          {/* <span className="text-[#D1D1D1]]">Page</span> : 1 2{" "}
-          <span className="text-[#6A983c]">3</span> 4 */}
           <label htmlFor="" className="mr-2 text-[12px] md:text-[16px] ">
             Page
           </label>
