@@ -4,7 +4,7 @@ import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDown
 const Tags = () => {
   return (
     <>
-      <div className="p-8 grid grid-flow-col grid-rows-3  gap-[10px] md:gap-[20px]  lg:gap-[30px]  lg:grid-row-1 ">
+      <div className="p-8 grid grid-flow-col grid-rows-3  gap-[10px] md:gap-[20px] md:grid-rows-2  lg:gap-[30px]  lg:grid-rows-1 ">
         {tags.map((tag, index) => {
           return (
             <div key={index} className="flex items-center">

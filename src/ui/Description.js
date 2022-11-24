@@ -1,31 +1,23 @@
 import React, { useState } from "react";
-import Number from "../component/Number";
-import gsap from "gsap";
-import { useRef } from "react";
-import RatingAdjust from "../component/RatingAdjust";
-import Reviews from "../component/Reviews";
-import Comment from "../component/Comment";
-import ReviewModal from "../component/ReviewModal";
+import { useParams } from "react-router-dom";
+import { format } from "timeago.js";
 import Button from "../component/Button";
+import Comment from "../component/Comment";
+import Number from "../component/Number";
+import RatingAdjust from "../component/RatingAdjust";
+import ReviewModal from "../component/ReviewModal";
+import Reviews from "../component/Reviews";
+
 const Description = ({ products }) => {
   const [openDescriptions, setOpenDescriptions] = useState(false);
   const [openReviews, setOpenReviews] = useState(false);
   const [openQuestions, setOpenQuestions] = useState(false);
-  const descriptionRef = useRef();
-  const descriptionItemRef = useRef([]);
-  const reviewRef = useRef([]);
+  const { id } = useParams();
 
   const openDescription = () => {
     setOpenDescriptions(true);
     setOpenReviews(false);
     setOpenQuestions(false);
-
-    gsap.from(descriptionItemRef.current, {
-      opacity: 0,
-      x: -100,
-      duration: 0.3,
-      stagger: 0.1,
-    });
   };
   const openReview = () => {
     setOpenDescriptions(false);
@@ -56,28 +48,33 @@ const Description = ({ products }) => {
       </div>
       {/* description */}
       {openDescriptions === true && (
-        <div ref={descriptionRef}>
-          <div className="font-bold my-6">Spec</div>
+        <div>
           <div>
-            {products.spec?.map((val, index) => {
-              return (
-                <div
-                  className="my-2"
-                  ref={(el) => (descriptionItemRef.current[index] = el)}
-                  key={index}
-                >
-                  {index + 1}. {val}
-                </div>
-              );
-            })}
+            {products
+              .filter((product) => product.id === id)
+              .map((product, index) => {
+                return (
+                  <div className="my-2" key={index}>
+                    <div className="font-bold my-6">Description</div>
+                    <div>{product.description}</div>
+                    <div className="font-bold my-6">Brands</div>
+                    <div>{product.brand}</div>
+                    <div className="font-bold my-6">Stock</div>
+                    <div>{product.stock}</div>
+                    <div className="font-bold my-6">Category</div>
+                    <div>{product.category}</div>
+                    <div className="font-bold my-6">Discount</div>
+                    <div>{product.discountPercentage}</div>
+                    <div className="font-bold my-6">Upload</div>
+                    <div>{format(product.createdAt)}</div>
+                  </div>
+                );
+              })}
           </div>
         </div>
       )}
       {/* reviews */}
-      <div
-        ref={reviewRef}
-        className={`${openReviews === false ? " scale-0" : " scale-100"} `}
-      >
+      <div className={`${openReviews === false ? " scale-0" : " scale-100"} `}>
         <div>
           <div className="font-bold my-6">Product Reviews</div>
           <div>

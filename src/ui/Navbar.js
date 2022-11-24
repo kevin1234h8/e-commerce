@@ -5,7 +5,7 @@ const Navbar = ({ user }) => {
     window.open("https://kevine-commerce.herokuapp.com/logout", "_self");
   };
   return (
-    <div className="flex items-center justify-between px-8 py-6">
+    <div className="hidden  items-center justify-between px-8 py-6 md:flex">
       <div className="flex text-[12px]">
         <div className="text-[#6A983C] mr-4">Chat with Us</div>
         <div className="mr-4">+420 336 775 664</div>
@@ -13,7 +13,10 @@ const Navbar = ({ user }) => {
       </div>
 
       <div className="flex items-center text-[12px] text-[#6A983C]">
-        <div className="mr-4">Blog</div>
+        <Link to="/blog">
+          <div className="mr-4">Blog</div>
+        </Link>
+
         <div className="mr-4">About Us</div>
         <div className="mr-4">Carees</div>
         {user ? (

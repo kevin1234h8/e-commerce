@@ -9,7 +9,7 @@ import BrandFilter from "../component/BrandFilter";
 import RatingFilter from "../component/RatingFilter";
 import { addToCart } from "../features/Cart";
 import Slider from "../component/Slider";
-
+import brands from "../json/brands.json";
 const Product = ({
   list,
   setList,
@@ -140,143 +140,16 @@ const Product = ({
             <div className="text-[18px] font-bold my-4">Brands</div>
             <div className="lg:flex">
               <div>
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"All"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Apple"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Samsung"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Microsoft Surface"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Infinix"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Hp"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Oppo"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Huawei"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Fog Scent Xpressio"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Al Munakh"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Lord - Al-Rehab"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"L'Oreal Paris"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Hemani Tea"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Dermive"}
-                />
-              </div>
-              <div>
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"ROREC White Rice"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Fair & Clear"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Saaf & Khaas"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Bake Parlor Big"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Fauji"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Dry Rose"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Royal_Mirage"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Flying Wooden"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"LED Lights"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"luxury palace"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Golden"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Baking Food Items"}
-                />
-                <BrandFilter
-                  setBrands={setBrands}
-                  checkboxFilter={checkboxFilter}
-                  brand={"Boho Decor"}
-                />
+                {brands.map((brand, index) => {
+                  return (
+                    <BrandFilter
+                      key={index}
+                      setBrands={setBrands}
+                      checkboxFilter={checkboxFilter}
+                      brand={brand.title}
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -397,19 +270,42 @@ const Product = ({
           })}
         </div>
       </div>
+      <div className="flex items-center justify-center md:hidden">
+        {products.length === 30 ? (
+          <button
+            onClick={showLessData}
+            className="bg-[#6A983C]  flex items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 "
+          >
+            <div className="mr-2  text-[12px] md:text-[16px]">
+              Show less products
+            </div>
+            <KeyboardArrowUp />
+          </button>
+        ) : (
+          <button
+            onClick={showMoreData}
+            className="bg-[#6A983C] flex items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 "
+          >
+            <div className="mr-2  text-[12px] md:text-[16px] ">
+              Show more products
+            </div>
+            <KeyboardArrowDownOutlinedIcon />
+          </button>
+        )}
+      </div>
       <div className="p-8 flex items-center justify-between">
-        <div className="flex items-center  ">
+        <div className="flex items-center gap-[10px]  ">
           {/* <span className="text-[#D1D1D1]]">Page</span> : 1 2{" "}
           <span className="text-[#6A983c]">3</span> 4 */}
-          <label htmlFor="" className="mr-2 ">
-            Page :
+          <label htmlFor="" className="mr-2 text-[12px] md:text-[16px] ">
+            Page
           </label>
-          <div className="">
+          <div className="border-2 border-[#6A983C] rounded-lg">
             <select
               name=""
               id=""
-              className="appearance-none p-4 outline-none"
-              onClick={showPageProduct}
+              className="appearance-none p-2 outline-none text-[12px] md:p-4  md:text-[16px] "
+              // onClick={showPageProduct}
               defaultValue={0}
               onChange={(e) => setPage(e.target.value)}
             >
@@ -421,15 +317,15 @@ const Product = ({
             </select>
             <KeyboardArrowDownOutlinedIcon className="text-[#6A983C]" />
           </div>
-          <label htmlFor="" className="mr-2 ">
-            Products per page :
+          <label htmlFor="" className="mr-2 text-[12px] md:text-[16px] ">
+            Products per page
           </label>
           <div className="border-2 border-[#6A983C] rounded-lg">
             <select
               name=""
               id=""
-              className="appearance-none p-4 outline-none"
-              onClick={showProductPerPage}
+              className="appearance-none p-2 outline-none text-[12px] md:p-4  md:text-[16px] "
+              // onClick={showProductPerPage}
               onChange={(e) => setProductPerPage(e.target.value)}
             >
               <option value="6">6</option>
@@ -437,7 +333,7 @@ const Product = ({
               <option value="20">20</option>
               <option value="30">30</option>
             </select>
-            <KeyboardArrowDownOutlinedIcon className="text-[#6A983C] mr-2" />
+            <KeyboardArrowDownOutlinedIcon className="text-[#6A983C] mr-2 hidden md:inline" />
           </div>
         </div>
 
@@ -445,17 +341,21 @@ const Product = ({
           {products.length === 30 ? (
             <button
               onClick={showLessData}
-              className="bg-[#6A983C] flex items-center px-4 py-2 rounded-[12px] text-white border-2 border-[#46760A]"
+              className="bg-[#6A983C] hidden flex items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 md:inline"
             >
-              <div className="mr-2">Show less products</div>
+              <div className="mr-2  text-[12px] md:text-[16px]">
+                Show less products
+              </div>
               <KeyboardArrowUp />
             </button>
           ) : (
             <button
               onClick={showMoreData}
-              className="bg-[#6A983C] flex items-center px-4 py-2 rounded-[12px] text-white border-2 border-[#46760A]"
+              className="bg-[#6A983C] hidden  items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 md:flex"
             >
-              <div className="mr-2">Show more products</div>
+              <div className="mr-2  text-[12px] md:text-[16px] ">
+                Show more products
+              </div>
               <KeyboardArrowDownOutlinedIcon />
             </button>
           )}

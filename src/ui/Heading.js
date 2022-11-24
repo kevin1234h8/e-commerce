@@ -1,10 +1,9 @@
 import React from "react";
 import ReorderOutlinedIcon from "@mui/icons-material/ReorderOutlined";
 import GridOnOutlinedIcon from "@mui/icons-material/GridOnOutlined";
-import products from "../json/products";
-const Heading = ({ list, setList }) => {
+const Heading = ({ list, setList, products }) => {
   return (
-    <div className="p-8 flex items-center justify-between">
+    <div className="p-8  items-center justify-between hidden md:flex">
       <div className="text-[16px] font-black md:text-[24px] lg:text-[32px] ">
         Products
       </div>
@@ -19,7 +18,7 @@ const Heading = ({ list, setList }) => {
         </div>
         <div className="flex items-center mr-4 ">
           <div className="text-[#6A983C] mr-2 font-extrabold bg-[#F4F8EC] p-2 rounded-full text-[12px] md:text-[16px]">
-            {products.length}
+            {products?.length}
           </div>
           <div className="text-[12px] md:text-[16px]">Products</div>
         </div>

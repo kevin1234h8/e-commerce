@@ -14,6 +14,10 @@ import Description from "./ui/Description";
 import Cart from "./page/Cart";
 import { useEffect } from "react";
 import axios from "axios";
+import Blog from "./page/Blog";
+import BlogDetail from "./page/subpage/detail/BlogDetail";
+import SubBlogDetail from "./page/subpage/detail/SubBlogDetail";
+
 function App() {
   const [user, setUser] = useState(null);
   const [login, setLogin] = useState(false);
@@ -26,6 +30,15 @@ function App() {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(2000);
   const [value, setValue] = useState([minPrice, maxPrice]);
+  const [blogs, setBlogs] = useState([]);
+  const [subBlogs, setSubBlogs] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [blogPage, setBlogPage] = useState(0);
+  const [subBlogPerPage, setSubBlogPerPage] = useState(2);
+  console.log(user);
 
   useEffect(() => {
     localStorage.setItem("selectedItem", JSON.stringify(category));
@@ -37,15 +50,15 @@ function App() {
 
   const searchProduct = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&limit=${productPerPage}`,
-      { withCredentials: true }
+      `https://kevine-commerce.herokuapp.com?q=${search}&category=${category}&limit=${productPerPage}`
+      // { withCredentials: true }
     );
     setProducts(res.data);
   };
 
   const categoryFilter = async (category) => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?category=${category}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      `https://kevine-commerce.herokuapp.com?category=${category}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -53,7 +66,7 @@ function App() {
 
   const searchCategory = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?category=${category}`,
+      `https://kevine-commerce.herokuapp.com?category=${category}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -61,7 +74,7 @@ function App() {
 
   const checkboxFilter = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      `https://kevine-commerce.herokuapp.com?category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
       { withCredentials: true }
     );
 
@@ -71,12 +84,12 @@ function App() {
   useEffect(() => {
     const getProduct = async () => {
       const res = await axios.get(
-        `https://kevine-commerce.herokuapp.com/products?p=${page}&limit=${productPerPage}`
+        `https://kevine-commerce.herokuapp.com?p=${page}&limit=${productPerPage}`
       );
       setProducts(res.data);
     };
     getProduct();
-  }, []);
+  }, [productPerPage, page]);
 
   useEffect(() => {
     const getLoginData = async () => {
@@ -93,7 +106,7 @@ function App() {
 
   const showPageProduct = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&p=${page}&limit=${productPerPage}`,
+      `https://kevine-commerce.herokuapp.com?q=${search}&category=${category}&p=${page}&limit=${productPerPage}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -101,10 +114,50 @@ function App() {
 
   const showProductPerPage = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?q=${search}&category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      `https://kevine-commerce.herokuapp.com?q=${search}&category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
       { withCredentials: true }
     );
     setProducts(res.data);
+  };
+
+  useEffect(() => {
+    const getBlog = async () => {
+      const res = await axios.get("https://kevine-commerce.herokuapp.com/blog");
+      setBlogs(res.data);
+    };
+    getBlog();
+  }, []);
+
+  useEffect(() => {
+    const getSubBlog = async () => {
+      const res = await axios.get(
+        `https://kevine-commerce.herokuapp.com/subBlog?limit=${subBlogPerPage}&p=${blogPage}`
+      );
+      setSubBlogs(res.data);
+    };
+    getSubBlog();
+  }, [subBlogPerPage, blogPage]);
+
+  useEffect(() => {
+    const getComment = async () => {
+      const res = await axios.get(
+        "https://kevine-commerce.herokuapp.com/comment"
+      );
+      setComments(res.data);
+    };
+    getComment();
+  }, []);
+
+  const sendComment = async () => {
+    const res = await axios.post(
+      "https://kevine-commerce.herokuapp.com/comment/add",
+      {
+        name,
+        email,
+        message,
+      }
+    );
+    setComments([...comments, res.data]);
   };
 
   return (
@@ -156,6 +209,35 @@ function App() {
           element={<ProductDetail user={user} products={products} />}
         />
         <Route path="/cart" element={<Cart user={user} />} />
+        <Route
+          path="/blog"
+          element={
+            <Blog
+              blogs={blogs}
+              subBlogs={subBlogs}
+              setSubBlogPerPage={setSubBlogPerPage}
+              setBlogPage={setBlogPage}
+            />
+          }
+        />
+        <Route
+          path="/blog/:blogId"
+          element={
+            <BlogDetail
+              blogs={blogs}
+              comments={comments}
+              sendComment={sendComment}
+              setName={setName}
+              setEmail={setEmail}
+              setMessage={setMessage}
+              subBlogs={subBlogs}
+            />
+          }
+        />
+        <Route
+          path="/subBlog/:id"
+          element={<SubBlogDetail subBlogs={subBlogs} comments={comments} />}
+        />
       </Routes>
     </Router>
   );

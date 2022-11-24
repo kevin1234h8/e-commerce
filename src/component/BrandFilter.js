@@ -1,30 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const BrandFilter = ({ brand, checkboxFilter, setBrands }) => {
-  const brandRef = useRef();
-
-  // const handleToggle = (value) => {
-  //   const currentIndex = checked.indexOf(value);
-  //   const newChecked = [...checked];
-
-  //   if (currentIndex === -1) {
-  //     newChecked.push(value);
-  //   } else {
-  //     newChecked.splice(currentIndex, 1);
-  //   }
-  //   setChecked(newChecked);
-  // };
-
+const BrandFilter = ({ brand, setBrands }) => {
   return (
-    <div className="my-2 ml-1 hidden md:block">
+    <div className="my-2 ml-1 ">
       <input
         name="brand"
         type="radio"
-        ref={brandRef}
         value={brand}
-        // onClick={checkboxFilter}
-        // onChange={() => handleToggle(brand)}
-        // checked={checked.indexOf(brand) === -1 ? false : true}
         onChange={(e) => {
           setBrands(e.target.value);
         }}

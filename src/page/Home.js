@@ -57,9 +57,17 @@ const Home = ({
         searchCategory={searchCategory}
         setSearch={setSearch}
         searchProduct={searchProduct}
+        checkboxFilter={checkboxFilter}
+        setBrands={setBrands}
+        categoryFilter={categoryFilter}
+        priceFilter={priceFilter}
+        maxPrice={maxPrice}
+        minPrice={minPrice}
+        value={value}
+        setValue={setValue}
       />
       <Tags />
-      <Heading />
+      <Heading products={products} />
       <Filter />
       <Product
         search={search}
