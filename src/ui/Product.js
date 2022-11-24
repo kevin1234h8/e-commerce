@@ -341,7 +341,7 @@ const Product = ({
           {products.length === 30 ? (
             <button
               onClick={showLessData}
-              className="bg-[#6A983C] hidden flex items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 md:inline"
+              className="bg-[#6A983C] hidden  items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 md:flex"
             >
               <div className="mr-2  text-[12px] md:text-[16px]">
                 Show less products
