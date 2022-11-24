@@ -50,8 +50,8 @@ function App() {
 
   const searchProduct = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com?q=${search}&category=${category}&limit=${productPerPage}`
-      // { withCredentials: true }
+      `https://kevine-commerce.herokuapp.com?q=${search}&category=${category}&limit=${productPerPage}`,
+      { withCredentials: true }
     );
     setProducts(res.data);
   };
@@ -84,7 +84,8 @@ function App() {
   useEffect(() => {
     const getProduct = async () => {
       const res = await axios.get(
-        `https://kevine-commerce.herokuapp.com?p=${page}&limit=${productPerPage}`
+        `https://kevine-commerce.herokuapp.com?p=${page}&limit=${productPerPage}`,
+        { withCredentials: true }
       );
       setProducts(res.data);
     };
@@ -122,7 +123,10 @@ function App() {
 
   useEffect(() => {
     const getBlog = async () => {
-      const res = await axios.get("https://kevine-commerce.herokuapp.com/blog");
+      const res = await axios.get(
+        "https://kevine-commerce.herokuapp.com/blog",
+        { withCredentials: true }
+      );
       setBlogs(res.data);
     };
     getBlog();
@@ -131,7 +135,8 @@ function App() {
   useEffect(() => {
     const getSubBlog = async () => {
       const res = await axios.get(
-        `https://kevine-commerce.herokuapp.com/subBlog?limit=${subBlogPerPage}&p=${blogPage}`
+        `https://kevine-commerce.herokuapp.com/subBlog?limit=${subBlogPerPage}&p=${blogPage}`,
+        { withCredentials: true }
       );
       setSubBlogs(res.data);
     };
@@ -141,7 +146,8 @@ function App() {
   useEffect(() => {
     const getComment = async () => {
       const res = await axios.get(
-        "https://kevine-commerce.herokuapp.com/comment"
+        "https://kevine-commerce.herokuapp.com/comment",
+        { withCredentials: true }
       );
       setComments(res.data);
     };
@@ -155,7 +161,8 @@ function App() {
         name,
         email,
         message,
-      }
+      },
+      { withCredentials: true }
     );
     setComments([...comments, res.data]);
   };
