@@ -35,8 +35,6 @@ const Product = ({
   const { items } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const [data, setData] = useState(products);
-
   const showMoreData = async () => {
     const res = await axios.get(
       "https://kevine-commerce.herokuapp.com/products"
