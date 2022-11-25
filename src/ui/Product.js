@@ -28,19 +28,19 @@ const Product = ({
   const { items } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const showMoreData = async () => {
-    const res = await axios.get(
-      "https://kevine-commerce.herokuapp.com/products"
-    );
-    setData(res.data);
-  };
+  // const showMoreData = async () => {
+  //   const res = await axios.get(
+  //     "https://kevine-commerce.herokuapp.com/products"
+  //   );
+  //   setData(res.data);
+  // };
 
-  const showLessData = async () => {
-    const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com/products?p=${0}`
-    );
-    setData(res.data);
-  };
+  // const showLessData = async () => {
+  //   const res = await axios.get(
+  //     `https://kevine-commerce.herokuapp.com/products?p=${0}`
+  //   );
+  //   setData(res.data);
+  // };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(items));
@@ -262,7 +262,7 @@ const Product = ({
       <div className="flex items-center justify-center md:hidden">
         {products?.length === 30 ? (
           <button
-            onClick={showLessData}
+            // onClick={showLessData}
             className="bg-[#6A983C]  flex items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 "
           >
             <div className="mr-2  text-[12px] md:text-[16px]">
@@ -272,7 +272,7 @@ const Product = ({
           </button>
         ) : (
           <button
-            onClick={showMoreData}
+            // onClick={showMoreData}
             className="bg-[#6A983C] flex items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 "
           >
             <div className="mr-2  text-[12px] md:text-[16px] ">
@@ -327,7 +327,7 @@ const Product = ({
         <div>
           {products.length === 30 ? (
             <button
-              onClick={showLessData}
+              // onClick={showLessData}
               className="bg-[#6A983C] hidden  items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 md:flex"
             >
               <div className="mr-2  text-[12px] md:text-[16px]">
@@ -337,7 +337,7 @@ const Product = ({
             </button>
           ) : (
             <button
-              onClick={showMoreData}
+              // onClick={showMoreData}
               className="bg-[#6A983C] hidden  items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 md:flex"
             >
               <div className="mr-2  text-[12px] md:text-[16px] ">
