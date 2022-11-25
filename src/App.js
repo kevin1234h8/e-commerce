@@ -101,7 +101,7 @@ function App() {
       setUser(res.data);
     };
     getLoginData();
-  }, [user]);
+  }, []);
 
   const showPageProduct = async () => {
     const res = await axios.get(
