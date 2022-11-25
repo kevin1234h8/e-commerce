@@ -50,7 +50,7 @@ function App() {
 
   const searchProduct = async () => {
     const res = await axios.get(
-      `https://kevin-ecommerce.vercel.app/q=${search}&category=${category}&limit=${productPerPage}`,
+      `https://kevin-ecommerce.vercel.app/api?q=${search}&category=${category}&limit=${productPerPage}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -58,7 +58,7 @@ function App() {
 
   const categoryFilter = async (category) => {
     const res = await axios.get(
-      `https://kevin-ecommerce.vercel.app/?category=${category}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      `https://kevin-ecommerce.vercel.app/api?category=${category}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -66,7 +66,7 @@ function App() {
 
   const searchCategory = async () => {
     const res = await axios.get(
-      `https://kevin-ecommerce.vercel.app/?category=${category}`,
+      `https://kevin-ecommerce.vercel.app/api?category=${category}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -74,7 +74,7 @@ function App() {
 
   const checkboxFilter = async () => {
     const res = await axios.get(
-      `https://kevin-ecommerce.vercel.app/?category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      `https://kevin-ecommerce.vercel.app/api?category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
       { withCredentials: true }
     );
 
@@ -84,7 +84,7 @@ function App() {
   useEffect(() => {
     const getProduct = async () => {
       const res = await axios.get(
-        `https://kevin-ecommerce.vercel.app/?p=${page}&limit=${productPerPage}`,
+        `https://kevin-ecommerce.vercel.app/api?p=${page}&limit=${productPerPage}`,
         { withCredentials: true }
       );
       setProducts(res.data);
@@ -107,7 +107,7 @@ function App() {
 
   const showPageProduct = async () => {
     const res = await axios.get(
-      `https://kevin-ecommerce.vercel.app/?q=${search}&category=${category}&p=${page}&limit=${productPerPage}`,
+      `https://kevin-ecommerce.vercel.app/api?q=${search}&category=${category}&p=${page}&limit=${productPerPage}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -115,7 +115,7 @@ function App() {
 
   const showProductPerPage = async () => {
     const res = await axios.get(
-      `https://kevin-ecommerce.vercel.app/?q=${search}&category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      `https://kevin-ecommerce.vercel.app/api?q=${search}&category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -134,7 +134,7 @@ function App() {
   useEffect(() => {
     const getSubBlog = async () => {
       const res = await axios.get(
-        `https://kevin-ecommerce.vercel.app/subBlog?limit=${subBlogPerPage}&p=${blogPage}`,
+        `https://kevin-ecommerce.vercel.app/api/subBlog?limit=${subBlogPerPage}&p=${blogPage}`,
         { withCredentials: true }
       );
       setSubBlogs(res.data);
@@ -145,7 +145,7 @@ function App() {
   useEffect(() => {
     const getComment = async () => {
       const res = await axios.get(
-        "https://kevin-ecommerce.vercel.app/comment",
+        "https://kevin-ecommerce.vercel.app/api/comment",
         { withCredentials: true }
       );
       setComments(res.data);
@@ -155,7 +155,7 @@ function App() {
 
   const sendComment = async () => {
     const res = await axios.post(
-      "https://kevin-ecommerce.vercel.app/comment/add",
+      "https://kevin-ecommerce.vercel.app/api/comment/add",
       {
         name,
         email,
