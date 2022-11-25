@@ -96,11 +96,11 @@ const Brand = ({
             <>
               <img
                 className="rounded-full w-10 mr-4"
-                src={user.photos[0]?.value}
+                // src={user.photos[0]?.value}
                 alt=""
               />
               <div className="mr-4 text-2xl font-bold ">
-                {user.displayName?.split(" ")[0]}
+                {/* {user.displayName?.split(" ")[0]} */}
               </div>
             </>
           ) : (
