@@ -50,7 +50,7 @@ function App() {
 
   const searchProduct = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com?q=${search}&category=${category}&limit=${productPerPage}`,
+      `https://kevin-ecommerce.vercel.app/q=${search}&category=${category}&limit=${productPerPage}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -58,7 +58,7 @@ function App() {
 
   const categoryFilter = async (category) => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com?category=${category}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      `https://kevin-ecommerce.vercel.app/?category=${category}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -66,7 +66,7 @@ function App() {
 
   const searchCategory = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com?category=${category}`,
+      `https://kevin-ecommerce.vercel.app/?category=${category}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -74,7 +74,7 @@ function App() {
 
   const checkboxFilter = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com?category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      `https://kevin-ecommerce.vercel.app/?category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
       { withCredentials: true }
     );
 
@@ -84,7 +84,7 @@ function App() {
   useEffect(() => {
     const getProduct = async () => {
       const res = await axios.get(
-        `https://kevine-commerce.herokuapp.com?p=${page}&limit=${productPerPage}`,
+        `https://kevin-ecommerce.vercel.app/?p=${page}&limit=${productPerPage}`,
         { withCredentials: true }
       );
       setProducts(res.data);
@@ -95,7 +95,7 @@ function App() {
   useEffect(() => {
     const getLoginData = async () => {
       await axios
-        .get("https://kevine-commerce.herokuapp.com/login/success", {
+        .get("https://kevin-ecommerce.vercel.app/login/success", {
           withCredentials: true,
         })
         .then((res) => {
@@ -107,7 +107,7 @@ function App() {
 
   const showPageProduct = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com?q=${search}&category=${category}&p=${page}&limit=${productPerPage}`,
+      `https://kevin-ecommerce.vercel.app/?q=${search}&category=${category}&p=${page}&limit=${productPerPage}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -115,7 +115,7 @@ function App() {
 
   const showProductPerPage = async () => {
     const res = await axios.get(
-      `https://kevine-commerce.herokuapp.com?q=${search}&category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      `https://kevin-ecommerce.vercel.app/?q=${search}&category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
       { withCredentials: true }
     );
     setProducts(res.data);
@@ -123,10 +123,9 @@ function App() {
 
   useEffect(() => {
     const getBlog = async () => {
-      const res = await axios.get(
-        "https://kevine-commerce.herokuapp.com/blog",
-        { withCredentials: true }
-      );
+      const res = await axios.get("https://kevin-ecommerce.vercel.app/blog", {
+        withCredentials: true,
+      });
       setBlogs(res.data);
     };
     getBlog();
@@ -135,7 +134,7 @@ function App() {
   useEffect(() => {
     const getSubBlog = async () => {
       const res = await axios.get(
-        `https://kevine-commerce.herokuapp.com/subBlog?limit=${subBlogPerPage}&p=${blogPage}`,
+        `https://kevin-ecommerce.vercel.app/subBlog?limit=${subBlogPerPage}&p=${blogPage}`,
         { withCredentials: true }
       );
       setSubBlogs(res.data);
@@ -146,7 +145,7 @@ function App() {
   useEffect(() => {
     const getComment = async () => {
       const res = await axios.get(
-        "https://kevine-commerce.herokuapp.com/comment",
+        "https://kevin-ecommerce.vercel.app/comment",
         { withCredentials: true }
       );
       setComments(res.data);
@@ -156,7 +155,7 @@ function App() {
 
   const sendComment = async () => {
     const res = await axios.post(
-      "https://kevine-commerce.herokuapp.com/comment/add",
+      "https://kevin-ecommerce.vercel.app/comment/add",
       {
         name,
         email,

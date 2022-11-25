@@ -22,7 +22,7 @@ const CreateAccount = () => {
   const [password, setPassword] = useState("");
 
   const googleLogin = () => {
-    window.open("https://kevine-commerce.herokuapp.com/auth/google", "_self");
+    window.open("https://kevin-ecommerce.vercel.app/auth/google", "_self");
   };
 
   const handleShowPassword = () => {
