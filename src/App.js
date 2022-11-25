@@ -94,13 +94,11 @@ function App() {
 
   useEffect(() => {
     const getLoginData = async () => {
-      await axios
-        .get("https://kevin-ecommerce.vercel.app/login/success", {
-          withCredentials: true,
-        })
-        .then((res) => {
-          setUser(res.data);
-        });
+      const res = await axios.get(
+        "https://kevin-ecommerce.vercel.app/login/success",
+        { withCredentials: true }
+      );
+      setUser(res.data);
     };
     getLoginData();
   }, []);
