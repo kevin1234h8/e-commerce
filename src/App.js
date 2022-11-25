@@ -176,7 +176,8 @@ function App() {
         />
         <Route
           path="/Login"
-          element={user ? <Navigate to={"/"} /> : <Login />}
+          // element={user ? <Navigate to={"/"} /> : <Login />}
+          element={<Login />}
         />
         <Route
           path="/"
