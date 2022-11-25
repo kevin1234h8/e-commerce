@@ -14,6 +14,7 @@ import Slider from "../component/Slider";
 import brands from "../json/brands.json";
 import Navbar from "./Navbar";
 import Drawer from "react-modern-drawer";
+import axios from "axios";
 const Brand = ({
   user,
   setSearch,
@@ -39,8 +40,10 @@ const Brand = ({
     setOpenSidebar(!openSidebar);
   };
 
-  const logout = () => {
-    window.open("https://kevine-commerce.herokuapp.com/logout", "_self");
+  const logout = async () => {
+    await axios.delete("https://kevin-ecommerce.vercel.app/logout", {
+      withCredentials: true,
+    });
   };
 
   const openDrawers = () => {
