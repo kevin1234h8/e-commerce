@@ -40,17 +40,15 @@ function App() {
   const [subBlogPerPage, setSubBlogPerPage] = useState(2);
 
   useEffect(() => {
-    // localStorage.setItem("loginUser", JSON.stringify(user));
-    localStorage.setItem("loginUser", user);
+    localStorage.setItem("loginUser", JSON.stringify(user));
   }, [user]);
 
   useEffect(() => {
-    // if (localStorage.getItem("loginUser")) {
-    //   JSON.parse(localStorage.getItem("loginUser"));
-    // } else {
-    //   setUser(null);
-    // }
-    localStorage.getItem("loginUser");
+    if (localStorage.getItem("loginUser")) {
+      JSON.parse(localStorage.getItem("loginUser"));
+    } else {
+      setUser(null);
+    }
   }, []);
 
   useEffect(() => {
