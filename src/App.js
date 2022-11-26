@@ -39,13 +39,13 @@ function App() {
   const [blogPage, setBlogPage] = useState(0);
   const [subBlogPerPage, setSubBlogPerPage] = useState(2);
 
-  useEffect(() => {
-    localStorage.setItem("loginUser", JSON.stringify(user));
-  }, [user]);
+  // useEffect(() => {
+  //   localStorage.setItem("loginUser", JSON.stringify(user));
+  // }, [user]);
 
-  useEffect(() => {
-    JSON.parse(localStorage.getItem("loginUser"));
-  }, []);
+  // useEffect(() => {
+  //   JSON.parse(localStorage.getItem("loginUser"));
+  // }, []);
 
   useEffect(() => {
     localStorage.setItem("selectedItem", JSON.stringify(category));
