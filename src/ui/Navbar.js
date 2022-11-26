@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+
 const Navbar = ({ user }) => {
-  const { items } = useSelector((state) => state.cart);
   const logout = () => {
     window.open("https://kevin-ecommerce.vercel.app/logout", "_self");
   };
@@ -21,7 +20,7 @@ const Navbar = ({ user }) => {
 
         <div className="mr-4">About Us</div>
         <div className="mr-4">Carees</div>
-        {user !== [] ? (
+        {user === [] ? (
           <button
             onClick={logout}
             className="bg-[#6A983C] px-4 py-2 rounded-[12px] text-white border-2 border-[#46760A] hover:bg-[#446127] duration-150"
