@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Navbar = ({ user }) => {
   const logout = () => {
-    window.open("https://kevine-commerce.herokuapp.com/logout", "_self");
+    window.open("https://kevin-ecommerce.vercel.app/logout", "_self");
   };
   return (
     <div className="hidden  items-center justify-between px-8 py-6 md:flex">
