@@ -33,6 +33,14 @@ const Navbar = ({ user }) => {
             </button>
           </Link>
         )}
+        <Link to="/cart">
+          <div className="relative md:hidden">
+            <LocalMallOutlinedIcon />
+            <div className=" flex items-center justify-center absolute bg-[#E5704B] w-4 h-4 rounded-full text-white p-2 bottom-[-5px] left-0">
+              {items?.length}
+            </div>
+          </div>
+        </Link>
       </div>
     </div>
   );
