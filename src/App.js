@@ -44,8 +44,12 @@ function App() {
   }, [user]);
 
   useEffect(() => {
-    JSON.parse(localStorage.getItem("loginUser"));
-  });
+    if (localStorage.getItem("loginUser")) {
+      JSON.parse(localStorage.getItem("loginUser"));
+    } else {
+      null;
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("selectedItem", JSON.stringify(category));
