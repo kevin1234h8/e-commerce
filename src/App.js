@@ -184,11 +184,11 @@ function App() {
       <Routes>
         <Route
           path="/createAccount"
-          element={user ? <Navigate to={"/login"} /> : <CreateAccount />}
+          element={user === [] ? <Navigate to={"/login"} /> : <CreateAccount />}
         />
         <Route
           path="/Login"
-          element={user ? <Navigate to={"/"} /> : <Login />}
+          element={user === [] ? <Navigate to={"/"} /> : <Login />}
         />
 
         <Route
