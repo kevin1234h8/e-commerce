@@ -93,24 +93,20 @@ const Brand = ({
           </div>
         </div>
         <div className="flex items-center">
-          {user?.map((val, index) => {
-            return (
-              <div key={index}>
-                {user ? (
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={val?.photo}
-                      className="w-14 h-14 rounded-full"
-                      alt=""
-                    />
-                    <div className="mr-4">{val?.displayName}</div>
-                  </div>
-                ) : (
-                  <Person2OutlinedIcon className="mr-4" />
-                )}
+          <div>
+            {user ? (
+              <div className="flex items-center gap-2">
+                <img
+                  src={user?.photo}
+                  className="w-14 h-14 rounded-full"
+                  alt=""
+                />
+                <div className="mr-4">{user?.displayName}</div>
               </div>
-            );
-          })}
+            ) : (
+              <Person2OutlinedIcon className="mr-4" />
+            )}
+          </div>
 
           <Link to="/cart">
             <div className="relative">
@@ -294,7 +290,7 @@ const Brand = ({
               Brands
             </div>
             <div className="grid grid-cols-2">
-              {brands.map((brand, index) => {
+              {brands?.map((brand, index) => {
                 return (
                   <div key={index} className="mb-2 ml-1 ">
                     <input
@@ -307,7 +303,7 @@ const Brand = ({
                       className="accent-[#6A983C]  mr-4 outline-none mb-4 "
                     />
                     <label htmlFor="filter2" className="mr-4 text-[12px]">
-                      {brand.title}
+                      {brand?.title}
                     </label>
                   </div>
                 );
