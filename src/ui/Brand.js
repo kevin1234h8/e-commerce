@@ -95,7 +95,7 @@ const Brand = ({
         <div className="flex items-center">
           {user?.map((val, index) => {
             return (
-              <div>
+              <div key={index}>
                 {user ? (
                   <div className="flex items-center gap-2">
                     <img

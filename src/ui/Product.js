@@ -202,7 +202,7 @@ const Product = ({
                 <div className="text-[#6A983c] my-2 ">
                   -{product?.discountPercentage}%
                 </div>
-                <Link to={`/product/${product.id}`}>
+                <Link to={`/product/${product?.id}`}>
                   <img
                     className="min-w-full rounded-lg h-[174px] object-cover"
                     src={product?.thumbnail}
@@ -325,7 +325,7 @@ const Product = ({
         </div>
 
         <div>
-          {products.length === 30 ? (
+          {products?.length === 30 ? (
             <button
               // onClick={showLessData}
               className="bg-[#6A983C] hidden  items-center px-2 py-1 rounded-[12px] text-white border-2 border-[#46760A] md:py-2 md:px-4 md:flex"
