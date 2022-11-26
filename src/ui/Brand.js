@@ -95,20 +95,21 @@ const Brand = ({
           </div>
         </div>
         <div className="flex items-center">
-          {user ? (
-            <>
-              <img
-                className="rounded-full w-10 mr-4"
-                // src={user.photos[0]?.value}
-                alt=""
-              />
-              <div className="mr-4 text-2xl font-bold ">
-                {/* {user.displayName?.split(" ")[0]} */}
+          {user?.map((val, index) => {
+            return (
+              <div>
+                {user ? (
+                  <div className="flex items-center gap-2">
+                    <img src={val?.photo} alt="" />
+                    <div>{val?.displayName}</div>
+                  </div>
+                ) : (
+                  <Person2OutlinedIcon />
+                )}
               </div>
-            </>
-          ) : (
-            <Person2OutlinedIcon className="font-thin mr-4" />
-          )}
+            );
+          })}
+
           <Link to="/cart">
             <div className="relative">
               <LocalMallOutlinedIcon />
