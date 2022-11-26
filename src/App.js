@@ -44,11 +44,7 @@ function App() {
   }, [user]);
 
   useEffect(() => {
-    if (localStorage.getItem("loginUser")) {
-      JSON.parse(localStorage.getItem("loginUser"));
-    } else {
-      setUser(null);
-    }
+    JSON.parse(localStorage.getItem("loginUser"));
   }, []);
 
   useEffect(() => {
