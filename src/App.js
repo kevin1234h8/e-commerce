@@ -19,7 +19,7 @@ import BlogDetail from "./page/subpage/detail/BlogDetail";
 import SubBlogDetail from "./page/subpage/detail/SubBlogDetail";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState([]);
   const [login, setLogin] = useState(false);
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
