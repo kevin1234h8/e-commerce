@@ -38,7 +38,14 @@ function App() {
   const [message, setMessage] = useState("");
   const [blogPage, setBlogPage] = useState(0);
   const [subBlogPerPage, setSubBlogPerPage] = useState(2);
-  console.log(user);
+
+  useEffect(() => {
+    localStorage.setItem("User", JSON.stringify(user));
+  }, [user]);
+
+  useEffect(() => {
+    JSON.parse(localStorage.getItem("User"));
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("selectedItem", JSON.stringify(category));
@@ -166,6 +173,7 @@ function App() {
     );
     setComments([...comments, res.data]);
   };
+  console.log(user);
 
   return (
     <Router>
@@ -176,9 +184,9 @@ function App() {
         />
         <Route
           path="/Login"
-          // element={user ? <Navigate to={"/"} /> : <Login />}
-          element={<Login />}
+          element={user ? <Navigate to={"/"} /> : <Login />}
         />
+
         <Route
           path="/"
           element={
