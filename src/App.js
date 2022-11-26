@@ -47,7 +47,7 @@ function App() {
     if (localStorage.getItem("loginUser")) {
       JSON.parse(localStorage.getItem("loginUser"));
     } else {
-      null;
+      setUser(null);
     }
   }, []);
 
@@ -104,23 +104,14 @@ function App() {
   }, [productPerPage, page]);
 
   useEffect(() => {
-    // const getLoginData = async () => {
-    //   const res = await axios.get(
-    //     "https://kevin-ecommerce.vercel.app/login/success",
-    //   );
-    //   setUser(res.data);
-    // };
-    // getLoginData();
-
-    axios
-      .get("https://kevin-ecommerce.vercel.app/login/success", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          setUser(res.data);
-        }
-      });
+    const getLoginData = async () => {
+      const res = await axios.get(
+        "https://kevin-ecommerce.vercel.app/login/success",
+        { withCredentials: true }
+      );
+      setUser(res.data);
+    };
+    getLoginData();
   }, []);
 
   const showPageProduct = async () => {

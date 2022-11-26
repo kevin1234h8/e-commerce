@@ -3,18 +3,16 @@ import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import SearchIcon from "@mui/icons-material/Search";
+import { Rating } from "@mui/material";
+import axios from "axios";
 import React, { useState } from "react";
+import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import RatingFilter from "../component/RatingFilter";
-import ratings from "../json/ratings.json";
-import { Rating } from "@mui/material";
 import Slider from "../component/Slider";
 import brands from "../json/brands.json";
-import Navbar from "./Navbar";
-import Drawer from "react-modern-drawer";
-import axios from "axios";
+import ratings from "../json/ratings.json";
 const Brand = ({
   user,
   setSearch,
@@ -164,6 +162,14 @@ const Brand = ({
                 </button>
               </Link>
             )}
+            <Link to="/cart">
+              <div className="relative text-black ml-4">
+                <LocalMallOutlinedIcon />
+                <div className=" flex items-center justify-center absolute bg-[#E5704B] w-4 h-4 rounded-full text-white p-2 bottom-[-5px] left-0">
+                  {items?.length}
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
         <div className="flex items-center justify-between my-4">

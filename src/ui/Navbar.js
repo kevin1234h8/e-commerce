@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Navbar = ({ user }) => {
+  const { items } = useSelector((state) => state.cart);
   const logout = () => {
     window.open("https://kevin-ecommerce.vercel.app/logout", "_self");
   };
@@ -33,14 +35,6 @@ const Navbar = ({ user }) => {
             </button>
           </Link>
         )}
-        <Link to="/cart">
-          <div className="relative md:hidden">
-            <LocalMallOutlinedIcon />
-            <div className=" flex items-center justify-center absolute bg-[#E5704B] w-4 h-4 rounded-full text-white p-2 bottom-[-5px] left-0">
-              {items?.length}
-            </div>
-          </div>
-        </Link>
       </div>
     </div>
   );
