@@ -100,11 +100,15 @@ const Brand = ({
               <div>
                 {user ? (
                   <div className="flex items-center gap-2">
-                    <img src={val?.photo} alt="" />
-                    <div>{val?.displayName}</div>
+                    <img
+                      src={val?.photo}
+                      className="w-14 h-14 rounded-full"
+                      alt=""
+                    />
+                    <div className="mr-4">{val?.displayName}</div>
                   </div>
                 ) : (
-                  <Person2OutlinedIcon />
+                  <Person2OutlinedIcon className="mr-4" />
                 )}
               </div>
             );
