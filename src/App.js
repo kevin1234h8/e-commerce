@@ -40,8 +40,12 @@ function App() {
   const [subBlogPerPage, setSubBlogPerPage] = useState(2);
 
   useEffect(() => {
-    localStorage.setItem("User", user);
+    localStorage.setItem("loginUser", JSON.stringify(user));
   }, [user]);
+
+  useEffect(() => {
+    JSON.parse(localStorage.getItem("loginUser"));
+  });
 
   useEffect(() => {
     localStorage.setItem("selectedItem", JSON.stringify(category));
