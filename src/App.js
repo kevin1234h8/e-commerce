@@ -19,7 +19,7 @@ import BlogDetail from "./page/subpage/detail/BlogDetail";
 import SubBlogDetail from "./page/subpage/detail/SubBlogDetail";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [login, setLogin] = useState(false);
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
@@ -39,13 +39,13 @@ function App() {
   const [blogPage, setBlogPage] = useState(0);
   const [subBlogPerPage, setSubBlogPerPage] = useState(2);
 
-  useEffect(() => {
-    localStorage.setItem("loginUser", JSON.stringify(user));
-  }, [user]);
+  // useEffect(() => {
+  //   localStorage.setItem("loginUser", JSON.stringify(user));
+  // }, [user]);
 
-  useEffect(() => {
-    JSON.parse(localStorage.getItem("loginUser"));
-  }, []);
+  // useEffect(() => {
+  //   JSON.parse(localStorage.getItem("loginUser"));
+  // }, []);
 
   useEffect(() => {
     localStorage.setItem("selectedItem", JSON.stringify(category));
