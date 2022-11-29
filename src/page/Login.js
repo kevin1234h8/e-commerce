@@ -28,7 +28,6 @@ const Login = () => {
   };
   return (
     <div>
-      {" "}
       <div className="flex  bg-slate-100 items-center justify-center min-h-screen">
         <div className="grid grid-cols-2 bg-white gap-[40px] p-8 place-items-center shadow-md rounded-lg">
           <div className="">

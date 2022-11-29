@@ -145,18 +145,18 @@ const Brand = ({
             <div className="mr-4">About Us</div>
             <div className="mr-4">Carees</div>
             {user ? (
+              <Link to="/Login">
+                <button className="bg-[#6A983C] px-4 py-2 rounded-[12px] text-white border-2 border-[#46760A] hover:bg-[#446127] duration-150">
+                  Login
+                </button>
+              </Link>
+            ) : (
               <button
                 onClick={logout}
                 className="bg-[#6A983C] px-4 py-2 rounded-[12px] text-white border-2 border-[#46760A] hover:bg-[#446127] duration-150"
               >
                 Logout
               </button>
-            ) : (
-              <Link to="/Login">
-                <button className="bg-[#6A983C] px-4 py-2 rounded-[12px] text-white border-2 border-[#46760A] hover:bg-[#446127] duration-150">
-                  Login
-                </button>
-              </Link>
             )}
             <Link to="/cart">
               <div className="relative text-black ml-4">
