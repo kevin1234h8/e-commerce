@@ -197,8 +197,7 @@ function App() {
     <Router>
       <Routes>
         <Route
-          index
-          path="/createAccount"
+          index={true}
           element={
             create ? (
               <Navigate to={"/login"} />
