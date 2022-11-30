@@ -8,16 +8,40 @@ import { Divider } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
+import businessGif from "../assets/business.gif";
 
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "swiper/css/bundle";
-const Login = () => {
+import axios from "axios";
+const Login = ({ login, setLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [name, setName] = useState("");
+  const [error, setError] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const sendLogin = async () => {
+    const res = await axios.post(
+      "https://kevin-ecommerce.vercel.app/login/data",
+      {
+        email: email,
+        password: password,
+      },
+      { withCredentials: true }
+    );
+
+    const getEmail = JSON.parse(localStorage.getItem("Email"));
+    const getPassword = JSON.parse(localStorage.getItem("Password"));
+    console.log(getEmail, getPassword);
+    if (getEmail === email && getPassword === password) {
+      setLogin(true);
+      localStorage.setItem("login", JSON.stringify(login(true)));
+      setError(false);
+    } else {
+      setError(true);
+    }
+  };
 
   const googleLogin = () => {
     window.open("https://kevin-ecommerce.vercel.app/auth/google", "_self");
@@ -74,28 +98,27 @@ const Login = () => {
                   <VisibilityOffIcon onClick={handleShowPassword} />
                 )}
               </div>
+              {error === true && (
+                <div
+                  className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                  role="alert"
+                >
+                  <span className="font-medium ">Error ! </span>Wrong email and
+                  password combination
+                </div>
+              )}
               <div className="flex items-center justify-center">
-                <button className="bg-[#6A983C] px-4 py-2 my-4 w-full  rounded-[12px] text-white border-2 border-[#46760A] hover:bg-[#446127] duration-150">
+                <button
+                  onClick={sendLogin}
+                  className="bg-[#6A983C] px-4 py-2 my-4 w-full  rounded-[12px] text-white border-2 border-[#46760A] hover:bg-[#446127] duration-150"
+                >
                   Login
                 </button>
               </div>
             </div>
           </div>
           <div>
-            <div class="swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">Slide 1</div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
-                ...
-              </div>
-              <div class="swiper-pagination"></div>
-
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-
-              <div class="swiper-scrollbar"></div>
-            </div>
+            <img src={businessGif} alt="" />
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   BrowserRouter as Router,
   Navigate,
@@ -19,7 +19,8 @@ import BlogDetail from "./page/subpage/detail/BlogDetail";
 import SubBlogDetail from "./page/subpage/detail/SubBlogDetail";
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState([]);
+  const [create, setCreate] = useState(false);
   const [login, setLogin] = useState(false);
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
@@ -38,14 +39,32 @@ function App() {
   const [message, setMessage] = useState("");
   const [blogPage, setBlogPage] = useState(0);
   const [subBlogPerPage, setSubBlogPerPage] = useState(2);
+  const effectRun = useRef(false);
+  useEffect(() => {
+    const getLoginData = async () => {
+      const getName = localStorage.getItem("Name");
+      const getEmail = localStorage.getItem("Email");
+      const getPassword = localStorage.getItem("Password");
 
-  // useEffect(() => {
-  //   localStorage.setItem("loginUser", JSON.stringify(user));
-  // }, [user]);
+      localStorage.setItem(
+        "loginUser",
+        JSON.stringify({
+          name: getName,
+          email: getEmail,
+          password: getPassword,
+        })
+      );
+    };
+    getLoginData();
+  }, []);
 
-  // useEffect(() => {
-  //   JSON.parse(localStorage.getItem("loginUser"));
-  // }, []);
+  useEffect(() => {
+    JSON.parse(localStorage.getItem("login"));
+  }, []);
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("loginUser")));
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("selectedItem", JSON.stringify(category));
@@ -99,16 +118,16 @@ function App() {
     getProduct();
   }, [productPerPage, page]);
 
-  useEffect(() => {
-    const getLoginData = async () => {
-      const res = await axios.get(
-        "https://kevin-ecommerce.vercel.app/login/success",
-        { withCredentials: true }
-      );
-      setUser(res.data);
-    };
-    getLoginData();
-  }, []);
+  // useEffect(() => {
+  //   const getLoginData = async () => {
+  //     const res = await axios.get(
+  //       "https://kevin-ecommerce.vercel.app/login/success",
+  //       { withCredentials: true }
+  //     );
+  //     setUser(res.data);
+  //   };
+  //   getLoginData();
+  // }, []);
 
   const showPageProduct = async () => {
     const res = await axios.get(
@@ -173,18 +192,30 @@ function App() {
     );
     setComments([...comments, res.data]);
   };
-  console.log(user);
 
   return (
     <Router>
       <Routes>
         <Route
+          index
           path="/createAccount"
-          element={user === [] ? <Navigate to={"/login"} /> : <CreateAccount />}
+          element={
+            create ? (
+              <Navigate to={"/login"} />
+            ) : (
+              <CreateAccount setCreate={setCreate} user={user} />
+            )
+          }
         />
         <Route
           path="/Login"
-          element={user === [] ? <Navigate to={"/"} /> : <Login />}
+          element={
+            login ? (
+              <Navigate to={"/"} />
+            ) : (
+              <Login setLogin={setLogin} user={user} login={login} />
+            )
+          }
         />
 
         <Route
@@ -212,6 +243,8 @@ function App() {
               minPrice={minPrice}
               value={value}
               setValue={setValue}
+              login={login}
+              setLogin={setLogin}
             />
           }
         />

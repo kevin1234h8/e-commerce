@@ -30,6 +30,8 @@ const Home = ({
   minPrice,
   value,
   setValue,
+  login,
+  setLogin,
 }) => {
   const [list, setList] = useState(false);
 
@@ -49,7 +51,7 @@ const Home = ({
 
   return (
     <div>
-      <Navbar user={user} />
+      <Navbar user={user} login={login} setLogin={setLogin} />
       <Brand
         category={category}
         setCategory={setCategory}
@@ -65,6 +67,8 @@ const Home = ({
         minPrice={minPrice}
         value={value}
         setValue={setValue}
+        login={login}
+        setLogin={setLogin}
       />
       <Tags />
       <Heading products={products} />
