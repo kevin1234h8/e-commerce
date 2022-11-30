@@ -210,7 +210,7 @@ function App() {
           path="/Login"
           element={
             login ? (
-              <Navigate to={"/"} />
+              <Navigate to={"/home"} />
             ) : (
               <Login setLogin={setLogin} user={user} login={login} />
             )
@@ -218,7 +218,7 @@ function App() {
         />
 
         <Route
-          path="/"
+          path="/home"
           element={
             <Home
               search={search}
