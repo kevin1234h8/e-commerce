@@ -58,21 +58,7 @@ const Login = ({ login, setLogin }) => {
             <div className="text-[24px] font-bold px-4 mb-8">
               Join our Community
             </div>
-            <div
-              onClick={googleLogin}
-              className="flex items-center border-2 p-4 rounded-full my-4  "
-            >
-              <img src={google} className="w-6 mr-4 " alt="" />
-              <div>Sign in with Google</div>
-            </div>
-            <div className="flex items-center border-2  p-4 rounded-full my-4  ">
-              <img src={facebook} className="w-6 mr-4 " alt="" />
-              <div>Sign in with facebook</div>
-            </div>
 
-            <Divider>
-              <small>Or</small>
-            </Divider>
             <div>
               <div className="border-2 px-4 py-2  rounded-full mt-2 mb-4">
                 <EmailIcon className="text-[#002fa7] " />

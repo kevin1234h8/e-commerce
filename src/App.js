@@ -199,7 +199,7 @@ function App() {
         <Route
           index={true}
           element={
-            create ? (
+            user ? (
               <Navigate to={"/login"} />
             ) : (
               <CreateAccount setCreate={setCreate} user={user} />
