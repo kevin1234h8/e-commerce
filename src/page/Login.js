@@ -4,6 +4,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PasswordIcon from "@mui/icons-material/Password";
 import EmailIcon from "@mui/icons-material/Email";
 import google from "../assets/google.webp";
+import github from "../assets/github.png";
 import { Divider } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -43,6 +44,10 @@ const Login = ({ login, setLogin }) => {
     }
   };
 
+  const Github = () => {
+    window.open("https://kevin-ecommerce.vercel.app/auth/github", "_self");
+  };
+
   const googleLogin = () => {
     window.open("https://kevin-ecommerce.vercel.app/auth/google", "_self");
   };
@@ -64,6 +69,13 @@ const Login = ({ login, setLogin }) => {
             >
               <img src={google} className="w-4 mr-4" alt="" />
               <div>Sign in with Google</div>
+            </div>
+            <div
+              onClick={Github}
+              className="flex my-6 border-2 rounded-full p-2 items-center justify-center"
+            >
+              <img src={github} className="w-4 mr-4" alt="" />
+              <div>Sign in with Github</div>
             </div>
 
             <div>

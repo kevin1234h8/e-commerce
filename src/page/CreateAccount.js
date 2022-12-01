@@ -9,6 +9,7 @@ import { Divider } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
+import github from "../assets/github.png";
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -45,6 +46,10 @@ const CreateAccount = ({ setCreate }) => {
     };
     getCreateAccountData();
   }, []);
+
+  const Github = () => {
+    window.open("https://kevin-ecommerce.vercel.app/auth/github", "_self");
+  };
 
   const googleLogin = () => {
     window.open("https://kevin-ecommerce.vercel.app/auth/google", "_self");
@@ -99,6 +104,13 @@ const CreateAccount = ({ setCreate }) => {
               >
                 <img src={google} className="w-4 mr-4" alt="" />
                 <div>Sign in with Google</div>
+              </div>
+              <div
+                onClick={Github}
+                className="flex my-6 border-2 rounded-full p-2 items-center justify-center"
+              >
+                <img src={github} className="w-4 mr-4" alt="" />
+                <div>Sign in with Github</div>
               </div>
               <div>
                 <div className="border-2 px-4 py-2  rounded-full mt-2 mb-4">
