@@ -7,10 +7,10 @@ import Tags from "../ui/Tags";
 import BlogContent from "./subpage/BlogContent";
 import { format } from "timeago.js";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-const Blog = ({ blogs, subBlogs, setSubBlogPerPage, setBlogPage }) => {
+const Blog = ({ blogs, subBlogs, setSubBlogPerPage, setBlogPage, login }) => {
   return (
     <div>
-      <Navbar />
+      <Navbar login={login} />
       <Brand />
       <Tags />
       <Heading />

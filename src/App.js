@@ -19,7 +19,10 @@ import BlogDetail from "./page/subpage/detail/BlogDetail";
 import SubBlogDetail from "./page/subpage/detail/SubBlogDetail";
 
 function App() {
-  const [user, setUser] = useState([]);
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [user, setUser] = useState("");
   const [create, setCreate] = useState(false);
   const [login, setLogin] = useState(false);
   const [products, setProducts] = useState([]);
@@ -56,7 +59,7 @@ function App() {
       );
     };
     getLoginData();
-  }, []);
+  }, [userName, userEmail, userPassword]);
 
   useEffect(() => {
     JSON.parse(localStorage.getItem("login"));
@@ -199,10 +202,19 @@ function App() {
         <Route
           index={true}
           element={
-            user ? (
+            create ? (
               <Navigate to={"/login"} />
             ) : (
-              <CreateAccount setCreate={setCreate} user={user} />
+              <CreateAccount
+                setCreate={setCreate}
+                user={user}
+                userName={userName}
+                userEmail={userEmail}
+                setUserEmail={setUserEmail}
+                setUserName={setUserName}
+                setUserPassword={setUserPassword}
+                userPassword={userPassword}
+              />
             )
           }
         />
@@ -265,6 +277,7 @@ function App() {
               subBlogs={subBlogs}
               setSubBlogPerPage={setSubBlogPerPage}
               setBlogPage={setBlogPage}
+              login={login}
             />
           }
         />

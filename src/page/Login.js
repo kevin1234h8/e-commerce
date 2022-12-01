@@ -36,7 +36,7 @@ const Login = ({ login, setLogin }) => {
     console.log(getEmail, getPassword);
     if (getEmail === email && getPassword === password) {
       setLogin(true);
-      localStorage.setItem("login", JSON.stringify(login(true)));
+      localStorage.setItem("login", JSON.stringify(login));
       setError(false);
     } else {
       setError(true);

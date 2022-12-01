@@ -92,6 +92,7 @@ const CreateAccount = ({ setCreate }) => {
         <div>
           <img src={gif} alt="" />
         </div>
+        <button onClick={googleLogin}>Google</button>
         <Formik
           initialValues={{
             name: "",
