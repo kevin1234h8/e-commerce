@@ -17,7 +17,7 @@ import "swiper/css/navigation";
 import "swiper/css/bundle";
 import axios from "axios";
 const Login = ({ login, setLogin }) => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const [error, setError] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,24 +58,28 @@ const Login = ({ login, setLogin }) => {
   return (
     <div>
       <div className="flex  bg-slate-100 items-center justify-center min-h-screen">
-        <div className="grid grid-cols-2 bg-white gap-[40px] p-8 place-items-center shadow-md rounded-lg">
+        <div className="grid grid-cols-1 bg-white gap-[40px] p-8 place-items-center shadow-md rounded-lg md:grid-cols-2 ">
           <div className="">
-            <div className="text-[24px] font-bold px-4 mb-8">
-              Join our Community
+            <div className="text-[18px] text-center font-bold px-4 mb-8 md:text-[24px] md:text-start">
+              Login
             </div>
             <div
               onClick={googleLogin}
               className="flex my-6 border-2 rounded-full p-2 items-center justify-center"
             >
               <img src={google} className="w-4 mr-4" alt="" />
-              <div>Sign in with Google</div>
+              <div className="text-[14px] md:text-[16px]">
+                Sign in with Google
+              </div>
             </div>
             <div
               onClick={Github}
               className="flex my-6 border-2 rounded-full p-2 items-center justify-center"
             >
               <img src={github} className="w-4 mr-4" alt="" />
-              <div>Sign in with Github</div>
+              <div className="text-[14px] md:text-[16px]">
+                Sign in with Github
+              </div>
             </div>
 
             <div>
@@ -122,7 +126,7 @@ const Login = ({ login, setLogin }) => {
               </div>
             </div>
           </div>
-          <div>
+          <div className="hidden md:block">
             <img src={businessGif} alt="" />
           </div>
         </div>

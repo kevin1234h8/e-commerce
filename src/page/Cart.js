@@ -59,8 +59,8 @@ const Cart = ({ user }) => {
       <Tags />
       <Heading />
       <Filter />
-      <div className="p-8 flex">
-        <div className="product">
+      <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-4 ">
+        <div className="w-full md:2/3">
           <table className="table-auto w-full ">
             <thead className="text-left">
               <tr>
@@ -140,7 +140,7 @@ const Cart = ({ user }) => {
             )}
           </table>
         </div>
-        <div className="categories bg-slate-100 p-8 rounded-lg">
+        <div className="w-full bg-slate-100 p-8 rounded-lg ">
           <div className=" text-2xl font-bold mb-4">Order Summary</div>
           <div className="flex items-center justify-between">
             <div className="my-4 font-bold">ITEMS {items?.length}</div>

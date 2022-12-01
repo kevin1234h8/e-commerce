@@ -180,7 +180,11 @@ const Brand = ({
             </div>
           </Link>
           <div className="flex items-center gap-4">
-            <img src={user?.photos[0].value} alt="" />
+            <img
+              src={user?.photos[0].value}
+              alt=""
+              className="w-14 h-14 rounded-full"
+            />
             <div>{user?.displayName}</div>
             <MenuIcon onClick={openDrawers} />
           </div>

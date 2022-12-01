@@ -31,7 +31,7 @@ const signupSchema = Yup.object().shape({
 });
 
 const CreateAccount = ({ setCreate }) => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -60,8 +60,8 @@ const CreateAccount = ({ setCreate }) => {
   };
   return (
     <div className="flex  bg-slate-100 items-center justify-center min-h-screen">
-      <div className="grid grid-cols-2 bg-white gap-[40px] p-8 place-items-center shadow-md rounded-lg">
-        <div>
+      <div className="grid grid-cols-1 bg-white gap-[40px] p-8 place-items-center shadow-md rounded-lg md:grid-cols-2">
+        <div className="hidden md:block">
           <img src={gif} alt="" />
         </div>
 
@@ -95,22 +95,26 @@ const CreateAccount = ({ setCreate }) => {
         >
           {({ errors, touched }) => (
             <Form>
-              <div className="text-[24px] font-bold px-4 mb-8">
+              <div className="text-[18px] text-center font-bold px-4 mb-8 md:text-[24px] md:text-start">
                 Join our Community
               </div>
               <div
                 onClick={googleLogin}
-                className="flex my-6 border-2 rounded-full p-2 items-center justify-center"
+                className="flex my-6 border-2 rounded-full p-2 px- items-center justify-center"
               >
                 <img src={google} className="w-4 mr-4" alt="" />
-                <div>Sign in with Google</div>
+                <div className="text-[14px] md:text-[16px]">
+                  Sign in with Google
+                </div>
               </div>
               <div
                 onClick={Github}
                 className="flex my-6 border-2 rounded-full p-2 items-center justify-center"
               >
                 <img src={github} className="w-4 mr-4" alt="" />
-                <div>Sign in with Github</div>
+                <div className="text-[14px] md:text-[16px]">
+                  Sign in with Github
+                </div>
               </div>
               <div>
                 <div className="border-2 px-4 py-2  rounded-full mt-2 mb-4">
@@ -125,7 +129,7 @@ const CreateAccount = ({ setCreate }) => {
                   <Field
                     name="name"
                     placeholder="type a name"
-                    className="px-4 py-2 outline-none"
+                    className="px-4 py-2 outline-none text-[14px] md:text-[16px]"
                   />
                 </div>
                 {errors.name && touched.name ? (
@@ -149,7 +153,7 @@ const CreateAccount = ({ setCreate }) => {
                   <Field
                     name="email"
                     placeholder="type a email"
-                    className="px-4 py-2 outline-none"
+                    className="px-4 py-2 outline-none text-[14px] md:text-[16px]"
                   />
                 </div>
                 {errors.email && touched.email ? (
@@ -168,15 +172,15 @@ const CreateAccount = ({ setCreate }) => {
                 /> */}
 
                   <Field
-                    type={showPassword === false ? "text" : "password"}
+                    type={showPassword === true ? "password" : "text"}
                     name="password"
                     placeholder="type a password"
-                    className="px-4 py-2 outline-none"
+                    className="px-4 py-2 outline-none text-[14px] md:text-[16px]"
                   />
-                  {showPassword === false ? (
-                    <VisibilityIcon onClick={handleShowPassword} />
-                  ) : (
+                  {showPassword === true ? (
                     <VisibilityOffIcon onClick={handleShowPassword} />
+                  ) : (
+                    <VisibilityIcon onClick={handleShowPassword} />
                   )}
                 </div>
                 {errors.password && touched.password ? (
