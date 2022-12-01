@@ -2,14 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ user, login, setLogin }) => {
-  // const logout = () => {
-  //   window.open("https://kevin-ecommerce.vercel.app/logout", "_self");
-  // };
-  console.log(login);
   const logout = () => {
-    setLogin(false);
-    localStorage.setItem("login", login);
+    window.open("http://localhost:5000/logout", "_self");
   };
+
   return (
     <div className="hidden  items-center justify-between px-8 py-6 md:flex">
       <div className="flex text-[12px]">
@@ -25,7 +21,7 @@ const Navbar = ({ user, login, setLogin }) => {
 
         <div className="mr-4">About Us</div>
         <div className="mr-4">Carees</div>
-        {login ? (
+        {user ? (
           <button
             onClick={logout}
             className="bg-[#6A983C] px-4 py-2 rounded-[12px] text-white border-2 border-[#46760A] hover:bg-[#446127] duration-150"

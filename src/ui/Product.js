@@ -204,7 +204,7 @@ const Product = ({
                 </div>
                 <Link to={`/product/${product?.id}`}>
                   <img
-                    className="min-w-full rounded-lg h-[174px] object-cover"
+                    className="min-w-full rounded-lg h-[174px] object-contain"
                     src={product?.thumbnail}
                     alt=""
                   />

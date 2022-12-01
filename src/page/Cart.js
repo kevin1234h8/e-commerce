@@ -47,6 +47,7 @@ const Cart = ({ user }) => {
         { withCredentials: true }
       );
       setOrder(res.data);
+      items = [];
     };
     sendData();
   }, [stripeToken, total]);
@@ -79,8 +80,8 @@ const Cart = ({ user }) => {
                       <td>
                         <Link to={`/product/${item.id}`}>
                           <img
-                            className="w-40 rounded-lg"
-                            src={item.thumbnail}
+                            className="w-40 rounded-lg h-40 object-contain"
+                            src={item?.thumbnail}
                             alt=""
                           />
                         </Link>

@@ -29,45 +29,12 @@ const signupSchema = Yup.object().shape({
     .required("Required"),
 });
 
-// const validate = (values) => {
-//   const errors = {};
-//   if (!values.email) {
-//     errors.email = "Required";
-//   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-//     errors.email = "Invalid email address";
-//   }
-
-//   return errors;
-// };
 const CreateAccount = ({ setCreate }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [createAccount, setCreateAccount] = useState([]);
-
-  // const sendData = async (values) => {
-  //   const res = await axios.post(
-  //     "http://localhost:5000/create/account",
-  //     values,
-  //     {
-  //       withCredentials: true,
-  //     }
-  //   );
-
-  //   localStorage.setItem("Name", JSON.stringify(values.name));
-  //   localStorage.setItem("Email", JSON.stringify(values.email));
-  //   localStorage.setItem("Password", JSON.stringify(values.password));
-  // };
-  // const formik = useFormik({
-  //   initialValues: {
-  //     email: "",
-  //   },
-  //   validate,
-  //   onSubmit: (values) => {
-  //     alert(JSON.stringify(values, null, 2));
-  //   },
-  // });
 
   useEffect(() => {
     const getCreateAccountData = async () => {
@@ -92,7 +59,7 @@ const CreateAccount = ({ setCreate }) => {
         <div>
           <img src={gif} alt="" />
         </div>
-        <button onClick={googleLogin}>Google</button>
+
         <Formik
           initialValues={{
             name: "",
@@ -126,7 +93,13 @@ const CreateAccount = ({ setCreate }) => {
               <div className="text-[24px] font-bold px-4 mb-8">
                 Join our Community
               </div>
-
+              <div
+                onClick={googleLogin}
+                className="flex my-6 border-2 rounded-full p-2 items-center justify-center"
+              >
+                <img src={google} className="w-4 mr-4" alt="" />
+                <div>Sign in with Google</div>
+              </div>
               <div>
                 <div className="border-2 px-4 py-2  rounded-full mt-2 mb-4">
                   <AccountCircleIcon className="text-[#002fa7] " />

@@ -22,7 +22,7 @@ function App() {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   const [create, setCreate] = useState(false);
   const [login, setLogin] = useState(false);
   const [products, setProducts] = useState([]);
@@ -49,24 +49,16 @@ function App() {
       const getEmail = localStorage.getItem("Email");
       const getPassword = localStorage.getItem("Password");
 
-      localStorage.setItem(
-        "loginUser",
-        JSON.stringify({
-          name: getName,
-          email: getEmail,
-          password: getPassword,
-        })
-      );
+      //   localStorage.setItem(
+      //     "loginUser",
+      //     JSON.stringify({
+      //       name: getName,
+      //       email: getEmail,
+      //       password: getPassword,
+      //     })
+      //   );
     };
     getLoginData();
-  }, [userName, userEmail, userPassword]);
-
-  useEffect(() => {
-    JSON.parse(localStorage.getItem("login"));
-  }, []);
-
-  useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("loginUser")));
   }, []);
 
   useEffect(() => {
@@ -121,16 +113,19 @@ function App() {
     getProduct();
   }, [productPerPage, page]);
 
-  // useEffect(() => {
-  //   const getLoginData = async () => {
-  //     const res = await axios.get(
-  //       "https://kevin-ecommerce.vercel.app/login/success",
-  //       { withCredentials: true }
-  //     );
-  //     setUser(res.data);
-  //   };
-  //   getLoginData();
-  // }, []);
+  useEffect(() => {
+    axios
+      .get("https://kevin-ecommerce.vercel.app/auth/login/success", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          setUser(res.data);
+          console.log(res.data);
+        }
+      });
+  }, []);
+  console.log(user);
 
   const showPageProduct = async () => {
     const res = await axios.get(
@@ -200,7 +195,7 @@ function App() {
     <Router>
       <Routes>
         <Route
-          index={true}
+          path="createAccount"
           element={
             create ? (
               <Navigate to={"/login"} />
@@ -230,7 +225,7 @@ function App() {
         />
 
         <Route
-          path="/home"
+          path="/"
           element={
             <Home
               search={search}
@@ -278,6 +273,7 @@ function App() {
               setSubBlogPerPage={setSubBlogPerPage}
               setBlogPage={setBlogPage}
               login={login}
+              user={user}
             />
           }
         />

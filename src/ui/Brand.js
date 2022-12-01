@@ -39,10 +39,14 @@ const Brand = ({
     setOpenSidebar(!openSidebar);
   };
 
-  const logout = async () => {
-    await axios.delete("https://kevin-ecommerce.vercel.app/logout", {
-      withCredentials: true,
-    });
+  // const logout = async () => {
+  //   await axios.delete("https://kevin-ecommerce.vercel.app/logout", {
+  //     withCredentials: true,
+  //   });
+  // };
+
+  const logout = () => {
+    window.open("http://localhost:5000/logout", "_self");
   };
 
   const openDrawers = () => {
@@ -98,7 +102,7 @@ const Brand = ({
             {user ? (
               <div className="flex items-center gap-2">
                 <img
-                  src={user?.photo}
+                  src={user?.photos[0].value}
                   className="w-14 h-14 rounded-full"
                   alt=""
                 />
@@ -145,7 +149,15 @@ const Brand = ({
             </Link>
             <div className="mr-4">About Us</div>
             <div className="mr-4">Carees</div>
-            {login ? (
+            <Link to="/cart">
+              <div className="relative text-black mr-4">
+                <LocalMallOutlinedIcon />
+                <div className=" flex items-center justify-center absolute bg-[#E5704B] w-4 h-4 rounded-full text-white p-2 bottom-[-5px] left-0">
+                  {items?.length}
+                </div>
+              </div>
+            </Link>
+            {user ? (
               <button
                 onClick={logout}
                 className="bg-[#6A983C] px-4 py-2 rounded-[12px] text-white border-2 border-[#46760A] hover:bg-[#446127] duration-150"
@@ -159,14 +171,6 @@ const Brand = ({
                 </button>
               </Link>
             )}
-            <Link to="/cart">
-              <div className="relative text-black ml-4">
-                <LocalMallOutlinedIcon />
-                <div className=" flex items-center justify-center absolute bg-[#E5704B] w-4 h-4 rounded-full text-white p-2 bottom-[-5px] left-0">
-                  {items?.length}
-                </div>
-              </div>
-            </Link>
           </div>
         </div>
         <div className="flex items-center justify-between my-4">
@@ -175,7 +179,9 @@ const Brand = ({
               KEVIN SHOP
             </div>
           </Link>
-          <div>
+          <div className="flex items-center gap-4">
+            <img src={user?.photos[0].value} alt="" />
+            <div>{user?.displayName}</div>
             <MenuIcon onClick={openDrawers} />
           </div>
         </div>
