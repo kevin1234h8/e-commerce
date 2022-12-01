@@ -192,27 +192,30 @@ const Product = ({
           </div>
         </div>
 
-        <div className="product grid grid-cols-1 grid-rows-3 gap-[15px] md:gap-[25px] lg:gap-[40px] lg:grid-cols-2 lg:grid-row-4 xl:grid-cols-3">
+        <div className="product grid grid-cols-1 grid-rows-4 gap-[15px] md:gap-[25px] lg:gap-[40px] lg:grid-cols-2 lg:grid-row-4 xl:grid-cols-3">
           {products?.map((product, index) => {
             return (
               <div
-                className="flex flex-col  border-2 shadow-md rounded-lg p-4 border-[#D1D1D1] max-h-[450px]"
+                className="flex flex-col justify-between  border-2 shadow-md rounded-lg p-4 border-[#D1D1D1] max-h-[450px]"
                 key={index}
               >
                 <div className="text-[#6A983c] my-2 ">
                   -{product?.discountPercentage}%
                 </div>
-                <Link to={`/product/${product?.id}`}>
-                  <img
-                    className="min-w-full rounded-lg h-[174px] object-contain"
-                    src={product?.thumbnail}
-                    alt=""
-                  />
-                </Link>
-                <div className="font-extrabold my-2 text-[15px]">
-                  {product?.title}
+                <div>
+                  <Link to={`/product/${product?.id}`}>
+                    <img
+                      className="min-w-full rounded-lg h-[174px] object-contain"
+                      src={product?.thumbnail}
+                      alt=""
+                    />
+                  </Link>
+                  <div className="font-extrabold my-2 text-[15px]">
+                    {product?.title}
+                  </div>
+                  <div className="text-[12px] mb-2">{product?.description}</div>
                 </div>
-                <div className="text-[12px] mb-2">{product?.description}</div>
+
                 <div>
                   <Rating
                     sx={{
