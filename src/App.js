@@ -18,6 +18,8 @@ import Blog from "./page/Blog";
 import BlogDetail from "./page/subpage/detail/BlogDetail";
 import SubBlogDetail from "./page/subpage/detail/SubBlogDetail";
 
+axios.defaults.withCredentials = true;
+
 function App() {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -119,10 +121,6 @@ function App() {
         "https://kevin-ecommerce.vercel.app/auth/login/success",
         {
           withCredentials: true,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json",
-          },
         }
       );
       setUser(res.data);
