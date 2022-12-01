@@ -118,8 +118,7 @@ function App() {
   useEffect(() => {
     const getLoginData = async () => {
       const res = await axios.get(
-        // "https://kevin-ecommerce.vercel.app/auth/login/success",
-        "https://kevin-ecommerce.netlify.app/auth/login/success",
+        "https://kevin-ecommerce.vercel.app/auth/login/success",
         {
           withCredentials: true,
         }
