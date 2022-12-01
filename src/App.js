@@ -114,16 +114,16 @@ function App() {
   }, [productPerPage, page]);
 
   useEffect(() => {
-    axios
-      .get("https://kevin-ecommerce.vercel.app/auth/login/success", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          setUser(res.data);
-          console.log(res.data);
+    const getLoginData = async () => {
+      const res = await axios.get(
+        "https://kevin-ecommerce.vercel.app/auth/login/success",
+        {
+          withCredentials: true,
         }
-      });
+      );
+      setUser(res.data);
+    };
+    getLoginData();
   }, []);
   console.log(user);
 
