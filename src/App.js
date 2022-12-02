@@ -39,12 +39,12 @@ function App() {
   const [blogs, setBlogs] = useState([]);
   const [subBlogs, setSubBlogs] = useState([]);
   const [comments, setComments] = useState([]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+
   const [message, setMessage] = useState("");
   const [blogPage, setBlogPage] = useState(0);
   const [subBlogPerPage, setSubBlogPerPage] = useState(2);
   const effectRun = useRef(false);
+
   useEffect(() => {
     const getLoginData = async () => {
       const getName = localStorage.getItem("Name");
@@ -97,7 +97,7 @@ function App() {
 
   const checkboxFilter = async () => {
     const res = await axios.get(
-      `https://kevin-ecommerce.vercel.app/api/products?category=${category}&brand=${brands}&min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
+      `https://kevin-ecommerce.vercel.app/api/products?min=${value[0]}&max=${value[1]}&limit=${productPerPage}`,
       { withCredentials: true }
     );
 
@@ -179,19 +179,6 @@ function App() {
     };
     getComment();
   }, []);
-
-  const sendComment = async () => {
-    const res = await axios.post(
-      "https://kevin-ecommerce.vercel.app/api/comment/add",
-      {
-        name,
-        email,
-        message,
-      },
-      { withCredentials: true }
-    );
-    setComments([...comments, res.data]);
-  };
 
   return (
     <Router>
@@ -276,6 +263,7 @@ function App() {
               setBlogPage={setBlogPage}
               login={login}
               user={user}
+              comments={comments}
             />
           }
         />
@@ -285,11 +273,12 @@ function App() {
             <BlogDetail
               blogs={blogs}
               comments={comments}
-              sendComment={sendComment}
-              setName={setName}
-              setEmail={setEmail}
+              // sendComment={sendComment}
+              // setName={setName}
+              // setEmail={setEmail}
               setMessage={setMessage}
               subBlogs={subBlogs}
+              setComments={setComments}
             />
           }
         />

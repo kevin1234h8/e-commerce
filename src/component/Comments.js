@@ -1,9 +1,10 @@
 import React from "react";
 import { format } from "timeago.js";
 const Comments = ({ admin, comment }) => {
+  console.log(comment);
   return (
     <div className={`flex ${admin ? "justify-start" : "justify-end"} `}>
-      <div className="my-2 border border-[#D1D1D1] p-4 rounded-lg place-items-end min-w-[569px] ">
+      <div className="my-2 border border-[#D1D1D1] p-4 rounded-lg place-items-end min-w-[400px] min:min-w-[569px] ">
         <div className="flex items-center gap-[10px] ">
           <div className="w-[40px] h-[40px] rounded-full bg-[#F9F9F9]"></div>
           <div>

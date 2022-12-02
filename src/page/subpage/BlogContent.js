@@ -6,9 +6,13 @@ import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import Footer from "../../ui/Footer";
 
-const BlogContent = ({ subBlogs, setSubBlogPerPage, setBlogPage }) => {
-  const [page, setPage] = useState("");
-
+const BlogContent = ({
+  subBlogs,
+  setSubBlogPerPage,
+  setBlogPage,
+  comments,
+}) => {
+  console.log(blogContents);
   return (
     <div className="px-8">
       <div className="flex gap-[30px]">
@@ -16,7 +20,7 @@ const BlogContent = ({ subBlogs, setSubBlogPerPage, setBlogPage }) => {
           {blogContents.map((blogContent, index) => {
             return (
               <div key={index}>
-                <div className="font-bold text-[14px] md:text-[18px] mb-4">
+                <div className="font-bold text-[14px] md:text-[18px] my-4">
                   {blogContent.name}
                 </div>
                 <div className="flex flex-col  text-[12px] md:text-[16px]">
@@ -73,14 +77,14 @@ const BlogContent = ({ subBlogs, setSubBlogPerPage, setBlogPage }) => {
           </div>
         </div>
         <div className="w-2/3">
-          <div className="grid grid-cols-1 grid-rows-4 lg:grid-cols-2">
+          <div className="grid grid-cols-1 grid-rows-2 md:grid-cols-2 gap-10 lg:grid-cols-3">
             {subBlogs?.map((subBlog, index) => {
               return (
-                <div key={index} className="w-[269px] h-[316px]">
+                <div key={index} className="h-[316px]">
                   <Link to={`/subBlog/${subBlog._id}`}>
                     <img
                       src={subBlog.image}
-                      className="h-[180px] rounded-lg my-6"
+                      className="ounded-lg my-6 object-contain"
                       alt=""
                     />
                   </Link>

@@ -2,15 +2,36 @@ import axios from "axios";
 import React, { useState } from "react";
 import Comments from "../../../component/Comments";
 
-const Reply = ({ comments, sendComment, setName, setEmail, setMessage }) => {
+const Reply = ({ comments, id, setComments }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const sendComment = async () => {
+    if (name && email !== "") {
+      const res = await axios.post(
+        "http://localhost:5000/api/comment/add",
+        {
+          blogId: id,
+          name: name,
+          email: email,
+          message: message,
+        },
+        { withCredentials: true }
+      );
+      window.location.reload();
+    }
+  };
+
   return (
     <div className="my-8">
       <div className="text-[14px] md:text-[20px] font-extrabold">
         Leave a Reply
       </div>
       <div className="text-[12px] md:text-[14px]">
-        Already have an account ? <span className="underline">Sign in</span> to
-        leave a reply.
+        Already have an account ?{" "}
+        <span className="underline text-blue-500">Sign in</span> to leave a
+        reply.
       </div>
       <div className="text-[12px] md:text-[14px]">
         <div className="grid grid-cols-2 gap-[10px]">
@@ -34,7 +55,7 @@ const Reply = ({ comments, sendComment, setName, setEmail, setMessage }) => {
           </div>
         </div>
 
-        <div className="my-2 flex items-center px-4 py-2 w-full bg-[#F9F9F9] border-[#D1D1D1] border gap-4 rounded-lg outline-none">
+        {/* <div className="my-2 flex items-center px-4 py-2 w-full bg-[#F9F9F9] border-[#D1D1D1] border gap-4 rounded-lg outline-none">
           <input
             type="checkbox"
             className="px-4 py-2 bg-[#F9F9F9] border-[#D1D1D1] border rounded-lg outline-none accent-[#6A983C]"
@@ -42,7 +63,7 @@ const Reply = ({ comments, sendComment, setName, setEmail, setMessage }) => {
           <div>
             Save my name and email in this browser for a next time comment.
           </div>
-        </div>
+        </div> */}
         <div className="my-2">
           <div>Comment</div>
           <textarea
@@ -63,19 +84,21 @@ const Reply = ({ comments, sendComment, setName, setEmail, setMessage }) => {
         </div>
         <div className="my-2">
           <div className="text-[20px] font-extrabold my-4">Comments</div>
-          {comments?.map((comment, index) => {
-            return (
-              <Comments
-                key={index}
-                comment={comment}
-                admin={comment.isAdmin}
-                sendComment={sendComment}
-                setName={setName}
-                setEmail={setEmail}
-                setMessage={setMessage}
-              />
-            );
-          })}
+          {comments
+            ?.filter((comment) => comment.blogId === id)
+            .map((comment, index) => {
+              return (
+                <Comments
+                  key={index}
+                  comment={comment}
+                  admin={comment.isAdmin}
+                  sendComment={sendComment}
+                  setName={setName}
+                  setEmail={setEmail}
+                  setMessage={setMessage}
+                />
+              );
+            })}
         </div>
       </div>
     </div>

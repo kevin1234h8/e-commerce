@@ -21,6 +21,7 @@ const SubBlogDetail = ({
   setMessage,
 }) => {
   const { id } = useParams();
+  console.log(subBlogs);
   return (
     <div>
       <Navbar />
@@ -36,7 +37,7 @@ const SubBlogDetail = ({
                 <div>
                   <img
                     src={subBlog.image}
-                    className="h-[480px] object-cover w-full rounded-lg"
+                    className="h-[480px] object-contain w-full rounded-lg"
                     alt=""
                   />
                   <div className="flex my-4 gap-[20px] justify-center ">
@@ -57,8 +58,8 @@ const SubBlogDetail = ({
                     </div>
                   </div>
                 </div>
-                <div className="flex  justify-center gap-[20px]">
-                  <div className="w-1/3">
+                <div className="grid col gap-[20px] md:grid-flow-col">
+                  <div className="w-full ">
                     <div className="text-[18px] font-extrabold">Tags</div>
                     <div className="grid grid-cols-2 gap-2">
                       <div className="text-[#6A983C] text-[12px] mt-2 bg-[#F4F8EC] p-2 rounded-lg font-extrabold">
@@ -75,13 +76,13 @@ const SubBlogDetail = ({
                       </div>
                     </div>
                     <Link to="/blog">
-                      <div className="flex items-center my-4 gap-1">
+                      <div className="flex items-center  mt-8 gap-1">
                         <ReplyIcon />
                         <div className="font-extrabold">Back to Blog</div>
                       </div>
                     </Link>
                   </div>
-                  <div className="w-2/3">
+                  <div className="w-full">
                     <div className="font-extrabold  text-[14px]  my-4 md:text-[18px]">
                       {subBlog?.subtitle[0]}
                     </div>
@@ -106,27 +107,38 @@ const SubBlogDetail = ({
                     <div className="text-[12px] md:text-[16px]">
                       {subBlog.content[3]}
                     </div>
-                    <div className="flex items-center gap-[20px]">
-                      <div className="font-extrabold">Share</div>
-                      <div className="flex items-center gap-1 bg-[#F5F5F5] p-2 rounded-lg">
-                        <FacebookIcon />
-                        <div>Facebook</div>
+                    <div className="grid items-center gap-[20px] md:grid-flow-col mt-6">
+                      <div className="font-extrabold text-[14px] md:text-[16px] ">
+                        Share
                       </div>
                       <div className="flex items-center gap-1 bg-[#F5F5F5] p-2 rounded-lg">
-                        <PinterestIcon />
-                        <div>Pinterest</div>
+                        <FacebookIcon fontSize="small" />
+                        <div className="text-[14px] md:text-[16px]">
+                          Facebook
+                        </div>
                       </div>
                       <div className="flex items-center gap-1 bg-[#F5F5F5] p-2 rounded-lg">
-                        <TwitterIcon />
-                        <div>Twitter</div>
+                        <PinterestIcon fontSize="small" />
+                        <div className="text-[14px] md:text-[16px]">
+                          Pinterest
+                        </div>
                       </div>
                       <div className="flex items-center gap-1 bg-[#F5F5F5] p-2 rounded-lg">
-                        <LinkedInIcon />
-                        <div>LinkedIn</div>
+                        <TwitterIcon fontSize="small" />
+                        <div className="text-[14px] md:text-[16px]">
+                          Twitter
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1 bg-[#F5F5F5] p-2 rounded-lg">
+                        <LinkedInIcon fontSize="small" />
+                        <div className="text-[14px] md:text-[16px]">
+                          LinkedIn
+                        </div>
                       </div>
                     </div>
                     <div>
                       <Reply
+                        id={id}
                         sendComment={sendComment}
                         setName={setName}
                         setEmail={setEmail}
@@ -151,7 +163,7 @@ const SubBlogDetail = ({
                 <Link to={`/subBlog/${subBlog._id}`}>
                   <img
                     src={subBlog.image}
-                    className="w-[269px] h-[180px] object-cover rounded-lg"
+                    className="w-[269px] h-[180px] object-contain rounded-lg"
                     alt=""
                   />
                 </Link>

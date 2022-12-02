@@ -30,7 +30,7 @@ const Blog = ({
                   <img
                     alt=""
                     src={blog.blogImage}
-                    className="w-full h-[400px] object-cover rounded-lg relative opacity-[0.9]"
+                    className="w-full h-[400px] object-contain rounded-lg relative opacity-[0.9]"
                   />
                 </Link>
                 <div className="relative my-2">

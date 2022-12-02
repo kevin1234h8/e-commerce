@@ -20,9 +20,10 @@ const BlogDetail = ({
   setEmail,
   setMessage,
   subBlogs,
+  setComments,
 }) => {
   const { blogId } = useParams();
-  console.log(blogId);
+
   return (
     <div>
       <Navbar />
@@ -129,6 +130,7 @@ const BlogDetail = ({
                     </div>
                     <div>
                       <Reply
+                        setComments={setComments}
                         sendComment={sendComment}
                         setName={setName}
                         setEmail={setEmail}
