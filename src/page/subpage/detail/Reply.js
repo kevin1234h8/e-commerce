@@ -10,7 +10,7 @@ const Reply = ({ comments, id, setComments }) => {
   const sendComment = async () => {
     if (name && email !== "") {
       const res = await axios.post(
-        "http://localhost:5000/api/comment/add",
+        "https://kevin-ecommerce.vercel.app/api/comment/add",
         {
           blogId: id,
           name: name,
